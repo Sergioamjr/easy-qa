@@ -1,8 +1,116 @@
-/* add css styles here (optional) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
 
-.test {
-  display: inline-block;
-  margin: 2em auto;
-  border: 2px solid #000;
-  font-size: 2em;
+.image_background {
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  z-index: -1;
+}
+
+.input_box {
+  position: relative;
+  background: #3464fb;
+  min-width: 320px;
+  max-width: 320px;
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  border-radius: 3px;
+  padding: 15px;
+  transition: transform 0.3s ease;
+  transform: translateY(95px);
+  padding-bottom: 0;
+}
+
+.input_box_with_image {
+  transform: translateY(230px);
+}
+
+.input_box.input_box_actived {
+  transform: translateY(0px);
+}
+
+.input_box_title {
+  display: block;
+  color: #fff;
+  font-size: 12px;
+}
+
+.input_box input {
+  width: 100%;
+}
+
+.input_box_change_status {
+  text-decoration: none;
+  font-size: 0;
+  position: absolute;
+  top: -70px;
+  cursor: pointer;
+  right: 0;
+  box-shadow: 3px 3px #1c3ead47;
+  border-radius: 50%;
+  background-color: #3563f6;
+  width: 45px;
+  height: 45px;
+  border: 0;
+  background-size: 30px;
+  background-image: url("./assets/rounded-up.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.input_box_change_status_actived {
+  background-image: url("./assets/rounded-down.svg");
+}
+
+.btn {
+  border: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: sans-serif;
+  background: #1c3ead;
+  box-shadow: 3px 3px #1c3ead47;
+  width: 100%;
+  cursor: pointer;
+  display: block;
+  text-align: center;
+  padding: 10px;
+  border-radius: 4px;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.btn.btn_danger {
+  font-size: 0;
+  background-size: 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #ad1c1c;
+  max-width: 40px;
+  margin-left: 15px;
+  box-shadow: 3px 3px #ad1c1c59;
+}
+
+.btn input {
+  display: none;
+}
+
+.m_bottom_15 {
+  margin-bottom: 15px;
+}
+
+.d_flex {
+  display: flex;
 }

@@ -21,7 +21,13 @@
     "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@types/lodash.get": "^4.4.6",
+    "@types/react-router": "^5.0.3",
+    "lodash.get": "^4.4.2",
+    "node-sass": "^4.12.0",
+    "react-router": "^5.0.1"
+  },
   "peerDependencies": {
     "prop-types": "^15.5.4",
     "react": "^15.0.0 || ^16.0.0",
