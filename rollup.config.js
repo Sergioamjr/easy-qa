@@ -6,6 +6,7 @@ import postcss from "rollup-plugin-postcss";
 import resolve from "rollup-plugin-node-resolve";
 import url from "rollup-plugin-url";
 import svgr from "@svgr/rollup";
+import image from "rollup-plugin-image";
 
 import pkg from "./package.json";
 
@@ -30,10 +31,7 @@ export default {
     postcss({
       modules: true
     }),
-    url({
-      limit: 0, // 0 => copy all files
-      include: ["**/*.?(ttf|woff|woff2|png|jpg|svg|gif)"]
-    }),
+    url({}),
     svgr(),
     resolve(),
     typescript({
@@ -46,5 +44,6 @@ export default {
         "node_modules/react-is/index.js": ["isValidElementType"]
       }
     })
+    // image()
   ]
 };

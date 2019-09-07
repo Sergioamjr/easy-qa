@@ -6,7 +6,9 @@ import * as React from "react";
 import _get from "lodash.get";
 import { RouteComponentProps } from "react-router";
 import { Store, defaultState } from "./types";
-import imageUp from "./assets/close.svg";
+import closeIcon from "./assets/close.svg";
+import arrowUp from "./assets/rounded-up.svg";
+import arrowDown from "./assets/rounded-down.svg";
 import {
   GetFromLocalStorage,
   SetFromLocalStorage
@@ -133,9 +135,10 @@ class ExampleComponent extends React.Component<Props, Store> {
           } ${isOpen ? styles.input_box_actived : ""}`}
         >
           <button
-            className={`${styles.input_box_change_status} ${
-              isOpen ? styles.input_box_change_status_actived : ""
-            }`}
+            className={`${styles.input_box_change_status}`}
+            style={{
+              backgroundImage: `url(${isOpen ? arrowDown : arrowUp})`
+            }}
             id="toggle-btn"
             onClick={this.toggleBoxStateHandler}
           >
@@ -154,7 +157,7 @@ class ExampleComponent extends React.Component<Props, Store> {
               <button
                 onClick={this.resetStoreHandler}
                 className={`${styles.btn} ${styles.btn_danger}`}
-                style={{ backgroundImage: `url(${imageUp})` }}
+                style={{ backgroundImage: `url(${closeIcon})` }}
               >
                 Remover
               </button>

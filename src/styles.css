@@ -65,13 +65,8 @@
   height: 45px;
   border: 0;
   background-size: 30px;
-  background-image: url("./assets/rounded-up.svg");
   background-position: center;
   background-repeat: no-repeat;
-}
-
-.input_box_change_status_actived {
-  background-image: url("./assets/rounded-down.svg");
 }
 
 .btn {
