@@ -54,7 +54,7 @@ class ExampleComponent extends React.Component<Props, Store> {
   updateFileHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files && event.target.files[0];
     if (!file || !file.type.includes("image")) {
-      console.warn("Select only images.");
+      console.warn("Document type invalid.");
       return false;
     }
     const reader: FileReader = new FileReader();
@@ -151,11 +151,11 @@ class ExampleComponent extends React.Component<Props, Store> {
             id="toggle-btn"
             onClick={this.toggleBoxStateHandler}
           >
-            <p>Abrir</p>
+            {isOpen ? "Close" : "Open"} component
           </button>
           <div className={styles.d_flex}>
             <label id="file-upload-label" className={styles.btn}>
-              {fileName ? fileName : "Selecionar Layout"}
+              {fileName ? `${fileName} selected` : "Select Layout"}
               <input
                 id="file-upload"
                 type="file"
@@ -168,14 +168,14 @@ class ExampleComponent extends React.Component<Props, Store> {
                 className={`${styles.btn} ${styles.btn_danger} btn-danger`}
                 style={{ backgroundImage: `url(${closeIcon})` }}
               >
-                Remover
+                Remove layout
               </button>
             )}
           </div>
           {fileName && (
             <div className={`${styles.m_bottom_15} input-controll-box`}>
               <div>
-                <label className={styles.input_box_title}>Opacidade</label>
+                <label className={styles.input_box_title}>Opacity</label>
                 <input
                   disabled={!fileName}
                   value={opacity * 100}
@@ -212,7 +212,7 @@ class ExampleComponent extends React.Component<Props, Store> {
                 />
               </div>
               <div>
-                <label className={styles.input_box_title}>Escala</label>
+                <label className={styles.input_box_title}>Scale</label>
                 <input
                   disabled={!fileName}
                   value={scale * 100}

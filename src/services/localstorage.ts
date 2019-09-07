@@ -10,7 +10,9 @@ export const SetFromLocalStorage = (store: Store) => {
   try {
     window.localStorage.setItem(key, JSON.stringify(store));
   } catch (error) {
-    console.log("Cota excedida.");
+    console.error(
+      "File size larger than 10MB, please, try to a smaller or poor resolution one."
+    );
   }
 };
 

@@ -48,7 +48,7 @@ describe("ExampleComponent", () => {
   it("should show the file name", () => {
     const wrapper = mount(<ExampleComponent {...mockProps} />);
     wrapper.setState({ fileName: "file.jpg" });
-    expect(wrapper.find("#file-upload-label").text()).toBe("file.jpg");
+    expect(wrapper.find("#file-upload-label").text()).toBe("file.jpg selected");
   });
 
   it("should upload file", () => {
