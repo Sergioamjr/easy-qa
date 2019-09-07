@@ -4,7 +4,6 @@
 
 import * as React from "react";
 import _get from "lodash.get";
-import { RouteComponentProps } from "react-router";
 import { Store, defaultState } from "./types";
 import closeIcon from "./assets/close.svg";
 import arrowUp from "./assets/rounded-up.svg";
@@ -15,8 +14,8 @@ import {
 } from "./services/localstorage";
 
 import styles from "./styles.css";
-export interface Props extends RouteComponentProps {}
 
+interface Props {}
 class ExampleComponent extends React.Component<Props, Store> {
   constructor(props: Props) {
     super(props);
@@ -54,7 +53,7 @@ class ExampleComponent extends React.Component<Props, Store> {
   updateFileHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files && event.target.files[0];
     if (!file || !file.type.includes("image")) {
-      console.warn("Document type invalid.");
+      console.warn("Document type is not valid, please, select only images.");
       return false;
     }
     const reader: FileReader = new FileReader();

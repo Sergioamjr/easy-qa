@@ -2,28 +2,20 @@ import React from "react";
 import ExampleComponent from ".";
 import { mount } from "enzyme";
 
-let mock: any = jest.fn();
-
-const mockProps = {
-  history: mock,
-  location: mock,
-  match: mock
-};
-
 describe("ExampleComponent", () => {
   it("is truthy", () => {
     expect(ExampleComponent).toBeTruthy();
   });
 
   it("should render ExampleComponent component", () => {
-    const wrapper = mount(<ExampleComponent {...mockProps} />);
+    const wrapper = mount(<ExampleComponent />);
     expect(wrapper).toHaveLength(1);
   });
 
   it("should children component", () => {
     const Children = () => <p>Children</p>;
     const wrapper = mount(
-      <ExampleComponent {...mockProps}>
+      <ExampleComponent>
         <Children />
       </ExampleComponent>
     );
@@ -31,7 +23,7 @@ describe("ExampleComponent", () => {
   });
 
   it("should open/close component", () => {
-    const wrapper = mount(<ExampleComponent {...mockProps} />);
+    const wrapper = mount(<ExampleComponent />);
     expect(wrapper.find(".input_box_change_status")).toHaveLength(1);
     expect(wrapper.find(".input-box-actived")).toHaveLength(0);
     wrapper.find("#toggle-btn").simulate("click");
@@ -39,20 +31,20 @@ describe("ExampleComponent", () => {
   });
 
   it("should hid/show input box", () => {
-    const wrapper = mount(<ExampleComponent {...mockProps} />);
+    const wrapper = mount(<ExampleComponent />);
     expect(wrapper.find(".input-controll-box")).toHaveLength(0);
     wrapper.setState({ fileName: "file.jpg" });
     expect(wrapper.find(".input-controll-box")).toHaveLength(1);
   });
 
   it("should show the file name", () => {
-    const wrapper = mount(<ExampleComponent {...mockProps} />);
+    const wrapper = mount(<ExampleComponent />);
     wrapper.setState({ fileName: "file.jpg" });
     expect(wrapper.find("#file-upload-label").text()).toBe("file.jpg selected");
   });
 
   it("should upload file", () => {
-    const wrapper = mount(<ExampleComponent {...mockProps} />);
+    const wrapper = mount(<ExampleComponent />);
     const instance = wrapper.instance() as ExampleComponent;
     const spy = jest.spyOn(instance, "updateFileHandler");
     wrapper.instance().forceUpdate();
@@ -64,7 +56,7 @@ describe("ExampleComponent", () => {
   });
 
   it("should return false when upload a non image file", () => {
-    const wrapper = mount(<ExampleComponent {...mockProps} />);
+    const wrapper = mount(<ExampleComponent />);
     const instance = wrapper.instance() as ExampleComponent;
     const spy = jest.spyOn(instance, "updateFileHandler");
     wrapper.instance().forceUpdate();
@@ -81,7 +73,7 @@ describe("ExampleComponent", () => {
   });
 
   it("should change updateTranslateXHandler state", () => {
-    const wrapper = mount(<ExampleComponent {...mockProps} />);
+    const wrapper = mount(<ExampleComponent />);
     wrapper.setState({ fileName: "file.jpg" });
     const instance = wrapper.instance() as ExampleComponent;
     const spy = jest.spyOn(instance, "updateTranslateXHandler");
@@ -93,7 +85,7 @@ describe("ExampleComponent", () => {
     expect(wrapper.state("translateX")).toBe(10);
   });
   it("should change updateTranslateYHandler state", () => {
-    const wrapper = mount(<ExampleComponent {...mockProps} />);
+    const wrapper = mount(<ExampleComponent />);
     wrapper.setState({ fileName: "file.jpg" });
     const instance = wrapper.instance() as ExampleComponent;
     const spy = jest.spyOn(instance, "updateTranslateYHandler");
@@ -106,7 +98,7 @@ describe("ExampleComponent", () => {
   });
 
   it("should change opacity state", () => {
-    const wrapper = mount(<ExampleComponent {...mockProps} />);
+    const wrapper = mount(<ExampleComponent />);
     wrapper.setState({ fileName: "file.jpg" });
     const instance = wrapper.instance() as ExampleComponent;
     const spy = jest.spyOn(instance, "updateOpacityHandler");
@@ -119,7 +111,7 @@ describe("ExampleComponent", () => {
   });
 
   it("should change scale state", () => {
-    const wrapper = mount(<ExampleComponent {...mockProps} />);
+    const wrapper = mount(<ExampleComponent />);
     wrapper.setState({ fileName: "file.jpg" });
     const instance = wrapper.instance() as ExampleComponent;
     const spy = jest.spyOn(instance, "updateScaleHandler");
@@ -132,7 +124,7 @@ describe("ExampleComponent", () => {
   });
 
   it("should reset state", () => {
-    const wrapper = mount(<ExampleComponent {...mockProps} />);
+    const wrapper = mount(<ExampleComponent />);
     wrapper.setState({ fileName: "file.jpg" });
     const instance = wrapper.instance() as ExampleComponent;
     const spy = jest.spyOn(instance, "resetStoreHandler");
