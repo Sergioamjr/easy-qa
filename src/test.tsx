@@ -1,18 +1,32 @@
 import React from "react";
-import { UnguessingUI } from ".";
+import ConnectWithUnguessingUI, { UnguessingUI } from ".";
 import { mount } from "enzyme";
 
 describe("UnguessingUI", () => {
-  it("is truthy", () => {
-    expect(UnguessingUI).toBeTruthy();
+  it("should render ConnectWithUnguessingUI", () => {
+    const ToConnect = () => <p>ToConnect</p>;
+    const Wrapper = ConnectWithUnguessingUI(ToConnect);
+    expect(Wrapper).toHaveLength(1);
   });
 
+  it("should pass all props to target component", () => {
+    const props = {
+      isLogged: true,
+      userName: "admin"
+    };
+    const ToConnect = () => {
+      return <p>ToConnect</p>;
+    };
+    const App = ConnectWithUnguessingUI(ToConnect);
+    const wrapper = mount(<App {...props} />);
+    expect(wrapper.find("ToConnect").props()).toEqual(props);
+  });
   it("should render UnguessingUI component", () => {
     const wrapper = mount(<UnguessingUI />);
     expect(wrapper).toHaveLength(1);
   });
 
-  it("should children component", () => {
+  it("should render children component", () => {
     const Children = () => <p>Children</p>;
     const wrapper = mount(
       <UnguessingUI>

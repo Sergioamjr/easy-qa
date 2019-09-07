@@ -6,7 +6,7 @@
 
 ## Why
 
-Have you ever tried to create a layout but it didn't look the same? We have a design, great tools to debug, we know CSS but it's different yet. Perhaps it's because we're worry about the implementation, sprint's deadline, integration with backend or just because we need to switch our eyes between screens and browsers tabs over and over again. It's too much to care about it and create the perfect UI.
+Have you ever tried to create a layout but it didn't look the same? We have a design, great tools to debug, we know CSS but it's looks different yet. Perhaps is because we're worry about the implementation, sprint's deadline, integration with backend or just because we need to switch our eyes between screens and browsers tabs over and over again. It's too much to care about it and create the perfect UI.
 
 UnGuessing UI was made to help you to create the perfect screen/component UI, looking the differences between your screen and the design while you're coding and your application is reloaded.
 
