@@ -1,29 +1,26 @@
-# easyup
+# UnGuessing UI
 
-> Description
+> Create precis UI without guessing wheter it's equal.
 
-[![NPM](https://img.shields.io/npm/v/easyup.svg)](https://www.npmjs.com/package/easyup) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/"unguessing-ui.svg)](https://www.npmjs.com/package/"unguessing-ui) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
 
 ```bash
-npm install --save easyup
+npm install --save unguessing-ui
 ```
 
 ## Usage
 
 ```tsx
-import * as React from 'react'
+import React from 'react'
+import UnGuessingUI from 'unguessing-ui'
 
-import MyComponent from 'easyup'
-
-class Example extends React.Component {
-  render () {
-    return (
-      <MyComponent />
-    )
-  }
+class YourPage extends React.Component {
+  ...
 }
+
+export default UnGuessingUI(YourPage)
 ```
 
 ## License
