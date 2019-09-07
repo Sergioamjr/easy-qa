@@ -1,6 +1,6 @@
 # UnGuessing UI
 
-> Create precis UI without guessing wheter it's equal.
+> Create perfect UI without struggle.
 
 [![NPM](https://img.shields.io/npm/v/unguessing-ui.svg)](https://www.npmjs.com/package/unguessing-ui) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) ![NPM](https://img.shields.io/npm/l/unguessing-ui) ![npm bundle size](https://img.shields.io/bundlephobia/min/unguessing-ui)
 
