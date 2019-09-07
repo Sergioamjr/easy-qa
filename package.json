@@ -46,6 +46,7 @@
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "gh-pages": "^1.2.0",
+    "husky": "^3.0.5",
     "install": "^0.13.0",
     "npm": "^6.11.3",
     "react": "^16.4.1",
@@ -63,5 +64,10 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm test"
+    }
+  }
 }
