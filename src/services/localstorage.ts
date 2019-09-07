@@ -1,5 +1,5 @@
 import { Store } from "./../types";
-const key = "GHOSTs";
+const key = "UNGUESSING-UI";
 
 export const GetFromLocalStorage = () => {
   const store = window.localStorage.getItem(key) || "{}";

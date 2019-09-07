@@ -3,7 +3,6 @@
  */
 
 import * as React from "react";
-import _get from "lodash.get";
 import { Store, defaultState } from "./types";
 import closeIcon from "./assets/close.svg";
 import arrowUp from "./assets/rounded-up.svg";
@@ -76,7 +75,7 @@ export class ExampleComponent extends React.Component<Props, Store> {
   };
 
   updateOpacityHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = _get(event, "target.value", "");
+    const { value } = event.target;
     const valueToInt = parseInt(value, 10);
     this.setState({
       opacity: valueToInt / 100
@@ -84,21 +83,21 @@ export class ExampleComponent extends React.Component<Props, Store> {
   };
 
   updateTranslateXHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = _get(event, "target.value", "");
+    const { value } = event.target;
     this.setState({
       translateX: parseInt(value, 10)
     });
   };
 
   updateTranslateYHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = _get(event, "target.value", "");
+    const { value } = event.target;
     this.setState({
       translateY: parseInt(value, 10)
     });
   };
 
   updateScaleHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = _get(event, "target.value", "");
+    const { value } = event.target;
     this.setState({
       scale: parseInt(value, 10) / 100
     });

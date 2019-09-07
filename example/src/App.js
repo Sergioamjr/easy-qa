@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import ExampleComponent from "easyup";
+import UnGuessingUI from "unguessing-ui";
 
 class App extends Component {
   render() {
@@ -12,4 +12,4 @@ const InjectProps = props => {
   return <App testProps={false} />;
 };
 
-export default ExampleComponent(InjectProps);
+export default UnGuessingUI(InjectProps);
