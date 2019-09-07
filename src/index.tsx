@@ -230,10 +230,15 @@ export class UnguessingUI extends React.Component<Props, Store> {
   }
 }
 
-const ConnectWithComponent = (Component: React.ReactType<Props>) => () => (
-  <UnguessingUI>
-    <Component />
-  </UnguessingUI>
-);
+const ConnectWithComponent = (Component: React.ReactType<Props>) => () => {
+  if (process.env.NODE_ENV === "production") {
+    return <Component />;
+  }
+  return (
+    <UnguessingUI>
+      <Component />
+    </UnguessingUI>
+  );
+};
 
 export default ConnectWithComponent;
