@@ -1,29 +1,29 @@
 import React from "react";
-import { ExampleComponent } from ".";
+import { UnguessingUI } from ".";
 import { mount } from "enzyme";
 
-describe("ExampleComponent", () => {
+describe("UnguessingUI", () => {
   it("is truthy", () => {
-    expect(ExampleComponent).toBeTruthy();
+    expect(UnguessingUI).toBeTruthy();
   });
 
-  it("should render ExampleComponent component", () => {
-    const wrapper = mount(<ExampleComponent />);
+  it("should render UnguessingUI component", () => {
+    const wrapper = mount(<UnguessingUI />);
     expect(wrapper).toHaveLength(1);
   });
 
   it("should children component", () => {
     const Children = () => <p>Children</p>;
     const wrapper = mount(
-      <ExampleComponent>
+      <UnguessingUI>
         <Children />
-      </ExampleComponent>
+      </UnguessingUI>
     );
     expect(wrapper.find("Children")).toHaveLength(1);
   });
 
   it("should open/close component", () => {
-    const wrapper = mount(<ExampleComponent />);
+    const wrapper = mount(<UnguessingUI />);
     expect(wrapper.find(".input_box_change_status")).toHaveLength(1);
     expect(wrapper.find(".input-box-actived")).toHaveLength(0);
     wrapper.find("#toggle-btn").simulate("click");
@@ -31,21 +31,21 @@ describe("ExampleComponent", () => {
   });
 
   it("should hid/show input box", () => {
-    const wrapper = mount(<ExampleComponent />);
+    const wrapper = mount(<UnguessingUI />);
     expect(wrapper.find(".input-controll-box")).toHaveLength(0);
     wrapper.setState({ fileName: "file.jpg" });
     expect(wrapper.find(".input-controll-box")).toHaveLength(1);
   });
 
   it("should show the file name", () => {
-    const wrapper = mount(<ExampleComponent />);
+    const wrapper = mount(<UnguessingUI />);
     wrapper.setState({ fileName: "file.jpg" });
     expect(wrapper.find("#file-upload-label").text()).toBe("file.jpg selected");
   });
 
   it("should upload file", () => {
-    const wrapper = mount(<ExampleComponent />);
-    const instance = wrapper.instance() as ExampleComponent;
+    const wrapper = mount(<UnguessingUI />);
+    const instance = wrapper.instance() as UnguessingUI;
     const spy = jest.spyOn(instance, "updateFileHandler");
     wrapper.instance().forceUpdate();
     const file = new Blob([], { type: "image/png" });
@@ -56,8 +56,8 @@ describe("ExampleComponent", () => {
   });
 
   it("should return false when upload a non image file", () => {
-    const wrapper = mount(<ExampleComponent />);
-    const instance = wrapper.instance() as ExampleComponent;
+    const wrapper = mount(<UnguessingUI />);
+    const instance = wrapper.instance() as UnguessingUI;
     const spy = jest.spyOn(instance, "updateFileHandler");
     wrapper.instance().forceUpdate();
     const file = new Blob([], { type: "blabla/doc" });
@@ -73,9 +73,9 @@ describe("ExampleComponent", () => {
   });
 
   it("should change updateTranslateXHandler state", () => {
-    const wrapper = mount(<ExampleComponent />);
+    const wrapper = mount(<UnguessingUI />);
     wrapper.setState({ fileName: "file.jpg" });
-    const instance = wrapper.instance() as ExampleComponent;
+    const instance = wrapper.instance() as UnguessingUI;
     const spy = jest.spyOn(instance, "updateTranslateXHandler");
     wrapper.instance().forceUpdate();
     wrapper.find("#updateTranslateXHandler").simulate("change", {
@@ -85,9 +85,9 @@ describe("ExampleComponent", () => {
     expect(wrapper.state("translateX")).toBe(10);
   });
   it("should change updateTranslateYHandler state", () => {
-    const wrapper = mount(<ExampleComponent />);
+    const wrapper = mount(<UnguessingUI />);
     wrapper.setState({ fileName: "file.jpg" });
-    const instance = wrapper.instance() as ExampleComponent;
+    const instance = wrapper.instance() as UnguessingUI;
     const spy = jest.spyOn(instance, "updateTranslateYHandler");
     wrapper.instance().forceUpdate();
     wrapper.find("#updateTranslateYHandler").simulate("change", {
@@ -98,9 +98,9 @@ describe("ExampleComponent", () => {
   });
 
   it("should change opacity state", () => {
-    const wrapper = mount(<ExampleComponent />);
+    const wrapper = mount(<UnguessingUI />);
     wrapper.setState({ fileName: "file.jpg" });
-    const instance = wrapper.instance() as ExampleComponent;
+    const instance = wrapper.instance() as UnguessingUI;
     const spy = jest.spyOn(instance, "updateOpacityHandler");
     wrapper.instance().forceUpdate();
     wrapper.find("#updateOpacityHandler").simulate("change", {
@@ -111,9 +111,9 @@ describe("ExampleComponent", () => {
   });
 
   it("should change scale state", () => {
-    const wrapper = mount(<ExampleComponent />);
+    const wrapper = mount(<UnguessingUI />);
     wrapper.setState({ fileName: "file.jpg" });
-    const instance = wrapper.instance() as ExampleComponent;
+    const instance = wrapper.instance() as UnguessingUI;
     const spy = jest.spyOn(instance, "updateScaleHandler");
     wrapper.instance().forceUpdate();
     wrapper.find("#updateScaleHandler").simulate("change", {
@@ -124,9 +124,9 @@ describe("ExampleComponent", () => {
   });
 
   it("should reset state", () => {
-    const wrapper = mount(<ExampleComponent />);
+    const wrapper = mount(<UnguessingUI />);
     wrapper.setState({ fileName: "file.jpg" });
-    const instance = wrapper.instance() as ExampleComponent;
+    const instance = wrapper.instance() as UnguessingUI;
     const spy = jest.spyOn(instance, "resetStoreHandler");
     wrapper.instance().forceUpdate();
     wrapper.find(".btn-danger").simulate("click");

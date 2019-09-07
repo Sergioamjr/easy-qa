@@ -1,5 +1,5 @@
 /**
- * @class ExampleComponent
+ * @class UnguessingUI
  */
 
 import * as React from "react";
@@ -16,7 +16,7 @@ import styles from "./styles.css";
 
 interface Props {}
 
-export class ExampleComponent extends React.Component<Props, Store> {
+export class UnguessingUI extends React.Component<Props, Store> {
   constructor(props: Props) {
     super(props);
     this.state = defaultState;
@@ -231,9 +231,9 @@ export class ExampleComponent extends React.Component<Props, Store> {
 }
 
 const ConnectWithComponent = (Component: React.ReactType<Props>) => () => (
-  <ExampleComponent>
+  <UnguessingUI>
     <Component />
-  </ExampleComponent>
+  </UnguessingUI>
 );
 
 export default ConnectWithComponent;
