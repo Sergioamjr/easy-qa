@@ -15,7 +15,7 @@ import {
 } from "./services/localstorage";
 
 import styles from "./styles.css";
-interface Props extends RouteComponentProps {}
+export interface Props extends RouteComponentProps {}
 
 class ExampleComponent extends React.Component<Props, Store> {
   constructor(props: Props) {
@@ -132,10 +132,19 @@ class ExampleComponent extends React.Component<Props, Store> {
         <div
           className={`${styles.input_box} ${
             fileName ? styles.input_box_with_image : ""
-          } ${isOpen ? styles.input_box_actived : ""}`}
+          } ${isOpen ? styles.input_box_actived : ""}
+          input-box
+          ${fileName ? "input-box-with-image" : ""} ${
+            isOpen ? "input-box-actived" : ""
+          }
+          `}
         >
           <button
-            className={`${styles.input_box_change_status}`}
+            className={`${
+              styles.input_box_change_status
+            } input_box_change_status ${
+              isOpen ? "input-box-change-status-actived" : ""
+            }`}
             style={{
               backgroundImage: `url(${isOpen ? arrowDown : arrowUp})`
             }}
@@ -156,7 +165,7 @@ class ExampleComponent extends React.Component<Props, Store> {
             {!!fileName && (
               <button
                 onClick={this.resetStoreHandler}
-                className={`${styles.btn} ${styles.btn_danger}`}
+                className={`${styles.btn} ${styles.btn_danger} btn-danger`}
                 style={{ backgroundImage: `url(${closeIcon})` }}
               >
                 Remover
@@ -164,7 +173,7 @@ class ExampleComponent extends React.Component<Props, Store> {
             )}
           </div>
           {fileName && (
-            <div className={styles.m_bottom_15}>
+            <div className={`${styles.m_bottom_15} input-controll-box`}>
               <div>
                 <label className={styles.input_box_title}>Opacidade</label>
                 <input
