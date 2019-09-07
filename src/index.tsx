@@ -16,7 +16,8 @@ import {
 import styles from "./styles.css";
 
 interface Props {}
-class ExampleComponent extends React.Component<Props, Store> {
+
+export class ExampleComponent extends React.Component<Props, Store> {
   constructor(props: Props) {
     super(props);
     this.state = defaultState;
@@ -230,4 +231,10 @@ class ExampleComponent extends React.Component<Props, Store> {
   }
 }
 
-export default ExampleComponent;
+const ConnectWithComponent = (Component: React.ReactType<Props>) => () => (
+  <ExampleComponent>
+    <Component />
+  </ExampleComponent>
+);
+
+export default ConnectWithComponent;

@@ -1,5 +1,5 @@
 import React from "react";
-import ExampleComponent from ".";
+import { ExampleComponent } from ".";
 import { mount } from "enzyme";
 
 describe("ExampleComponent", () => {

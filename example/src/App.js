@@ -2,12 +2,14 @@ import React, { Component } from "react";
 
 import ExampleComponent from "easyup";
 
-export default class App extends Component {
+class App extends Component {
   render() {
-    return (
-      <ExampleComponent>
-        <p>Componente</p>
-      </ExampleComponent>
-    );
+    return <p>Componente</p>;
   }
 }
+
+const InjectProps = props => {
+  return <App testProps={false} />;
+};
+
+export default ExampleComponent(InjectProps);
