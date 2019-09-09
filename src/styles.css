@@ -15,7 +15,7 @@
   left: 0;
   right: 0;
   opacity: 0;
-  z-index: -1;
+  z-index: 1;
 }
 
 .input_box {
@@ -31,6 +31,7 @@
   transition: transform 0.3s ease;
   transform: translateY(95px);
   padding-bottom: 0;
+  z-index: 99;
 }
 
 .input_box_with_image {
