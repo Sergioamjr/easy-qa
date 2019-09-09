@@ -12,6 +12,10 @@ UnGuessing UI was made to help you to create the perfect screen/component UI, lo
 
 You just need to upload an image file and than controll its opacity, position and scale.
 
+## Demo
+
+![Demo](https://i.imgur.com/BBK3TGV.gif)
+
 ## Install
 
 ```bash
