@@ -14,7 +14,7 @@ You just need to upload an image file and than controll its opacity, position an
 
 ## Demo
 
-![Demo](https://i.imgur.com/BBK3TGV.gif)
+![Demo](./doc/demo.gif)
 
 ## Install
 
