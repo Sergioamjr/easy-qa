@@ -43,6 +43,7 @@
 }
 
 .input_box_title {
+  margin-bottom: 5px;
   display: block;
   color: #fff;
   font-size: 12px;
@@ -109,4 +110,22 @@
 
 .d_flex {
   display: flex;
+}
+
+.flex1 {
+  flex: 1;
+}
+
+.color_white {
+  color: #fff;
+}
+
+.value_box {
+  margin-left: 10px;
+  background: #151515;
+  height: 31px;
+  line-height: 30px;
+  font-size: 12px;
+  padding: 0 5px;
+  border-radius: 4px;
 }

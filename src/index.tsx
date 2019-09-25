@@ -173,54 +173,74 @@ export class UnguessingUI extends React.Component<Props, Store> {
           </div>
           {fileName && (
             <div className={`${styles.m_bottom_15} input-controll-box`}>
-              <div>
-                <label className={styles.input_box_title}>Opacity</label>
-                <input
-                  disabled={!fileName}
-                  value={opacity * 100}
-                  type="range"
-                  min="0"
-                  max="100"
-                  id="updateOpacityHandler"
-                  onChange={this.updateOpacityHandler}
-                />
+              <div className={styles.d_flex}>
+                <div className={styles.flex1}>
+                  <label className={styles.input_box_title}>Opacity</label>
+                  <input
+                    disabled={!fileName}
+                    value={opacity * 100}
+                    type="range"
+                    min="0"
+                    max="100"
+                    id="updateOpacityHandler"
+                    onChange={this.updateOpacityHandler}
+                  />
+                </div>
+                <p className={`${styles.color_white} ${styles.value_box}`}>
+                  {opacity.toFixed(2)}
+                </p>
               </div>
 
-              <div>
-                <label className={styles.input_box_title}>Horizontal</label>
-                <input
-                  disabled={!fileName}
-                  type="range"
-                  min="-200"
-                  max="200"
-                  id="updateTranslateXHandler"
-                  value={translateX}
-                  onChange={this.updateTranslateXHandler}
-                />
+              <div className={styles.d_flex}>
+                <div className={styles.flex1}>
+                  <label className={styles.input_box_title}>Horizontal</label>
+                  <input
+                    disabled={!fileName}
+                    type="range"
+                    min="-200"
+                    max="200"
+                    id="updateTranslateXHandler"
+                    value={translateX}
+                    onChange={this.updateTranslateXHandler}
+                  />
+                </div>
+                <p className={`${styles.color_white} ${styles.value_box}`}>
+                  {translateX}
+                </p>
               </div>
-              <div>
-                <label className={styles.input_box_title}>Vertical</label>
-                <input
-                  disabled={!fileName}
-                  type="range"
-                  min="-200"
-                  max="200"
-                  id="updateTranslateYHandler"
-                  value={translateY}
-                  onChange={this.updateTranslateYHandler}
-                />
+              <div className={styles.d_flex}>
+                <div className={styles.flex1}>
+                  <label className={styles.input_box_title}>Vertical</label>
+                  <input
+                    disabled={!fileName}
+                    type="range"
+                    min="-200"
+                    max="200"
+                    id="updateTranslateYHandler"
+                    value={translateY}
+                    onChange={this.updateTranslateYHandler}
+                  />
+                </div>
+                <p className={`${styles.color_white} ${styles.value_box}`}>
+                  {translateY}
+                </p>
               </div>
-              <div>
-                <label className={styles.input_box_title}>Scale</label>
-                <input
-                  disabled={!fileName}
-                  value={scale * 100}
-                  type="range"
-                  min="0"
-                  max="200"
-                  id="updateScaleHandler"
-                  onChange={this.updateScaleHandler}
-                />
+              <div className={styles.d_flex}>
+                <div className={styles.flex1}>
+                  <label className={styles.input_box_title}>Scale</label>
+                  <input
+                    disabled={!fileName}
+                    value={scale * 100}
+                    type="range"
+                    min="0"
+                    max="200"
+                    id="updateScaleHandler"
+                    onChange={this.updateScaleHandler}
+                  />
+                </div>
+                <p className={`${styles.color_white} ${styles.value_box}`}>
+                  {scale.toFixed(2)}
+                </p>
               </div>
             </div>
           )}
