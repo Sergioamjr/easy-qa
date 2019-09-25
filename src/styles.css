@@ -100,6 +100,28 @@
   box-shadow: 3px 3px #ad1c1c59;
 }
 
+.btn.btn_primary {
+  font-size: 0;
+  background-size: 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #1c3ead;
+  max-width: 40px;
+  margin-left: 15px;
+  box-shadow: 3px 3px #1c3ead47;
+}
+
+.btn.btn_primary_dark {
+  font-size: 0;
+  background-size: 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #112d88;
+  max-width: 40px;
+  margin-left: 15px;
+  box-shadow: 3px 3px #1c3ead47;
+}
+
 .btn input {
   display: none;
 }
@@ -118,6 +140,10 @@
 
 .color_white {
   color: #fff;
+}
+
+.cursor_pointer {
+  cursor: pointer;
 }
 
 .value_box {

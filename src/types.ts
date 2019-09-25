@@ -9,6 +9,7 @@ export interface Store {
   scale: number;
   isOpen: boolean;
   enableDrag: boolean;
+  dragByMouse: boolean;
   mouseX: number;
   mouseY: number;
 }
@@ -16,6 +17,7 @@ export interface Store {
 export const defaultState = {
   mouseX: 0,
   mouseY: 0,
+  dragByMouse: false,
   enableDrag: false,
   fileName: "",
   image: "",

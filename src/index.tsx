@@ -7,6 +7,8 @@ import { Store, defaultState } from "./types";
 import closeIcon from "./assets/close.svg";
 import arrowUp from "./assets/rounded-up.svg";
 import arrowDown from "./assets/rounded-down.svg";
+import handDrag from "./assets/hand-drag.svg";
+import hand from "./assets/hand.svg";
 import {
   GetFromLocalStorage,
   SetFromLocalStorage
@@ -40,16 +42,16 @@ export class UnguessingUI extends React.Component<Props, Store> {
     window.addEventListener("mousemove", this.updateBackgroundPositionByHand);
   }
 
-  updateDragEnableValue = (event: MouseEvent, enableDrag: boolean) => {
+  updateDragEnableValue = (event: MouseEvent, dragByMouse: boolean) => {
     this.setState({
-      enableDrag,
-      mouseX: enableDrag ? event.pageX : 0,
-      mouseY: enableDrag ? event.pageY : 0
+      dragByMouse,
+      mouseX: dragByMouse ? event.pageX : 0,
+      mouseY: dragByMouse ? event.pageY : 0
     });
   };
 
   updateBackgroundPositionByHand = (event: MouseEvent) => {
-    if (this.state.enableDrag) {
+    if (this.state.dragByMouse && this.state.enableDrag) {
       const differenceX = event.pageX - this.state.mouseX;
       const differenceY = event.pageY - this.state.mouseY;
       this.setState(({ translateX, translateY, mouseX, mouseY }) => {
@@ -73,6 +75,14 @@ export class UnguessingUI extends React.Component<Props, Store> {
     this.setState({
       ...defaultState,
       isOpen: true
+    });
+  };
+
+  enableDragImage = () => {
+    this.setState(({ enableDrag }) => {
+      return {
+        enableDrag: !enableDrag
+      };
     });
   };
 
@@ -116,20 +126,6 @@ export class UnguessingUI extends React.Component<Props, Store> {
     });
   };
 
-  updateTranslateXHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.target;
-    this.setState({
-      translateX: parseInt(value, 10)
-    });
-  };
-
-  updateTranslateYHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.target;
-    this.setState({
-      translateY: parseInt(value, 10)
-    });
-  };
-
   updateScaleHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     this.setState({
@@ -141,6 +137,7 @@ export class UnguessingUI extends React.Component<Props, Store> {
     const {
       fileName,
       image,
+      enableDrag,
       width,
       height,
       translateX,
@@ -153,7 +150,8 @@ export class UnguessingUI extends React.Component<Props, Store> {
       <div>
         <div
           id="image"
-          className={styles.image_background}
+          className={`${styles.image_background} ${enableDrag &&
+            styles.cursor_pointer}`}
           style={{
             width,
             height,
@@ -201,6 +199,19 @@ export class UnguessingUI extends React.Component<Props, Store> {
             </label>
             {!!fileName && (
               <button
+                onClick={this.enableDragImage}
+                className={`${styles.btn} ${
+                  enableDrag ? styles.btn_primary_dark : styles.btn_primary
+                }`}
+                style={{
+                  backgroundImage: `url(${!enableDrag ? handDrag : hand})`
+                }}
+              >
+                Enable Drag
+              </button>
+            )}
+            {!!fileName && (
+              <button
                 onClick={this.resetStoreHandler}
                 className={`${styles.btn} ${styles.btn_danger} btn-danger`}
                 style={{ backgroundImage: `url(${closeIcon})` }}
@@ -229,40 +240,6 @@ export class UnguessingUI extends React.Component<Props, Store> {
                 </p>
               </div>
 
-              <div className={styles.d_flex}>
-                <div className={styles.flex1}>
-                  <label className={styles.input_box_title}>Horizontal</label>
-                  <input
-                    disabled={!fileName}
-                    type="range"
-                    min="-200"
-                    max="200"
-                    id="updateTranslateXHandler"
-                    value={translateX}
-                    onChange={this.updateTranslateXHandler}
-                  />
-                </div>
-                <p className={`${styles.color_white} ${styles.value_box}`}>
-                  {translateX}
-                </p>
-              </div>
-              <div className={styles.d_flex}>
-                <div className={styles.flex1}>
-                  <label className={styles.input_box_title}>Vertical</label>
-                  <input
-                    disabled={!fileName}
-                    type="range"
-                    min="-200"
-                    max="200"
-                    id="updateTranslateYHandler"
-                    value={translateY}
-                    onChange={this.updateTranslateYHandler}
-                  />
-                </div>
-                <p className={`${styles.color_white} ${styles.value_box}`}>
-                  {translateY}
-                </p>
-              </div>
               <div className={styles.d_flex}>
                 <div className={styles.flex1}>
                   <label className={styles.input_box_title}>Scale</label>
