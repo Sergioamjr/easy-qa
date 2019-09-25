@@ -8,9 +8,11 @@ export interface Store {
   translateY: number;
   scale: number;
   isOpen: boolean;
+  enableDrag: boolean;
 }
 
 export const defaultState = {
+  enableDrag: false,
   fileName: "",
   image: "",
   width: 0,

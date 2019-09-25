@@ -17,17 +17,37 @@ import styles from "./styles.css";
 interface Props {}
 
 export class UnguessingUI extends React.Component<Props, Store> {
-  constructor(props: Props) {
-    super(props);
-    this.state = defaultState;
-  }
+  state = {
+    ...defaultState
+  };
+
   componentDidMount() {
     const stateFromLocalStorage = GetFromLocalStorage();
     this.setState({
       ...this.state,
       ...stateFromLocalStorage
     });
+    document.addEventListener("mousedown", () =>
+      this.updateDragEnableValue(true)
+    );
+    document.addEventListener("mouseup", () =>
+      this.updateDragEnableValue(false)
+    );
+    window.addEventListener("mousemove", this.updateBackgroundPositionByHand);
   }
+
+  updateDragEnableValue = (enableDrag: boolean) => {
+    this.setState({
+      enableDrag
+    });
+  };
+
+  updateBackgroundPositionByHand = (event: MouseEvent) => {
+    if (this.state.enableDrag) {
+      console.log("X", event.pageX);
+      console.log("Y", event.pageX);
+    }
+  };
 
   componentDidUpdate(_prevProps: {}, prevState: Store) {
     if (prevState !== this.state) {
