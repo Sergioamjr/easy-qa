@@ -27,25 +27,39 @@ export class UnguessingUI extends React.Component<Props, Store> {
       ...this.state,
       ...stateFromLocalStorage
     });
-    document.addEventListener("mousedown", () =>
-      this.updateDragEnableValue(true)
-    );
-    document.addEventListener("mouseup", () =>
-      this.updateDragEnableValue(false)
-    );
+    const imageElement = document.getElementById("image");
+    imageElement &&
+      imageElement.addEventListener("mousedown", (event: MouseEvent) =>
+        this.updateDragEnableValue(event, true)
+      );
+    imageElement &&
+      imageElement.addEventListener("mouseup", (event: MouseEvent) =>
+        this.updateDragEnableValue(event, false)
+      );
+
     window.addEventListener("mousemove", this.updateBackgroundPositionByHand);
   }
 
-  updateDragEnableValue = (enableDrag: boolean) => {
+  updateDragEnableValue = (event: MouseEvent, enableDrag: boolean) => {
     this.setState({
-      enableDrag
+      enableDrag,
+      mouseX: enableDrag ? event.pageX : 0,
+      mouseY: enableDrag ? event.pageY : 0
     });
   };
 
   updateBackgroundPositionByHand = (event: MouseEvent) => {
     if (this.state.enableDrag) {
-      console.log("X", event.pageX);
-      console.log("Y", event.pageX);
+      const differenceX = event.pageX - this.state.mouseX;
+      const differenceY = event.pageY - this.state.mouseY;
+      this.setState(({ translateX, translateY, mouseX, mouseY }) => {
+        return {
+          translateY: differenceY + translateY,
+          translateX: differenceX + translateX,
+          mouseX: mouseX + differenceX,
+          mouseY: mouseY + differenceY
+        };
+      });
     }
   };
 
@@ -138,6 +152,7 @@ export class UnguessingUI extends React.Component<Props, Store> {
     return (
       <div>
         <div
+          id="image"
           className={styles.image_background}
           style={{
             width,
@@ -149,6 +164,9 @@ export class UnguessingUI extends React.Component<Props, Store> {
         />
         {this.props.children}
         <div
+          onClick={e => {
+            e.stopPropagation();
+          }}
           className={`${styles.input_box} ${
             fileName ? styles.input_box_with_image : ""
           } ${isOpen ? styles.input_box_actived : ""}
