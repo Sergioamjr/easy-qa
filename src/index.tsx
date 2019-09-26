@@ -25,6 +25,7 @@ export class UnguessingUI extends React.Component<Props, State> {
 
   componentDidMount() {
     const stateFromLocalStorage = GetFromLocalStorage();
+
     this.setState({
       ...this.state,
       ...stateFromLocalStorage
@@ -43,13 +44,17 @@ export class UnguessingUI extends React.Component<Props, State> {
   }
 
   componentDidUpdate(_prevProps: {}, prevState: State) {
-    const { mouseEvents, ...prevStateWithMouseEvents } = prevState;
+    const { mouseEvents, ...prevStateWithoutMouseEvents } = prevState;
     const {
       mouseEvents: mouseEvents_,
-      ...currentlyStateWithMouseEvents
+      ...currentlyStateWithoutMouseEvents
     } = this.state;
-    if (prevStateWithMouseEvents !== currentlyStateWithMouseEvents) {
-      SetFromLocalStorage(currentlyStateWithMouseEvents);
+
+    if (
+      JSON.stringify(prevStateWithoutMouseEvents) !==
+      JSON.stringify(currentlyStateWithoutMouseEvents)
+    ) {
+      SetFromLocalStorage(currentlyStateWithoutMouseEvents);
     }
   }
 

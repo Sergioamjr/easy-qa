@@ -25,7 +25,7 @@ describe("UnguessingUI", () => {
     expect(wrapper.find("ToConnect").props()).toEqual(props);
   });
   test("should render UnguessingUI component", () => {
-    const wrapper = mount(<UnguessingUI />);
+    const wrapper = mount<{}, State>(<UnguessingUI />);
     expect(wrapper).toHaveLength(1);
   });
 
@@ -40,7 +40,7 @@ describe("UnguessingUI", () => {
   });
 
   test("should open/close component", () => {
-    const wrapper = mount(<UnguessingUI />);
+    const wrapper = mount<{}, State>(<UnguessingUI />);
     expect(wrapper.find(".input_box_change_status")).toHaveLength(1);
     expect(wrapper.find(".input-box-actived")).toHaveLength(0);
     wrapper.find("#toggle-btn").simulate("click");
@@ -48,20 +48,20 @@ describe("UnguessingUI", () => {
   });
 
   test("should hid/show input box", () => {
-    const wrapper = mount(<UnguessingUI />);
+    const wrapper = mount<{}, State>(<UnguessingUI />);
     expect(wrapper.find(".input-controll-box")).toHaveLength(0);
     wrapper.setState({ fileName: "file.jpg" });
     expect(wrapper.find(".input-controll-box")).toHaveLength(1);
   });
 
   test("should show the file name", () => {
-    const wrapper = mount(<UnguessingUI />);
+    const wrapper = mount<{}, State>(<UnguessingUI />);
     wrapper.setState({ fileName: "file.jpg" });
     expect(wrapper.find("#file-upload-label").text()).toBe("file.jpg selected");
   });
 
   test("should upload file", () => {
-    const wrapper = mount(<UnguessingUI />);
+    const wrapper = mount<{}, State>(<UnguessingUI />);
     const instance = wrapper.instance() as UnguessingUI;
     const spy = jest.spyOn(instance, "updateFileHandler");
     wrapper.instance().forceUpdate();
@@ -73,7 +73,7 @@ describe("UnguessingUI", () => {
   });
 
   test("should return false when upload a non image file", () => {
-    const wrapper = mount(<UnguessingUI />);
+    const wrapper = mount<{}, State>(<UnguessingUI />);
     const instance = wrapper.instance() as UnguessingUI;
     const spy = jest.spyOn(instance, "updateFileHandler");
     wrapper.instance().forceUpdate();
@@ -89,33 +89,8 @@ describe("UnguessingUI", () => {
     ).toBeFalsy();
   });
 
-  test.skip("should change updateTranslateXHandler state", () => {
-    const wrapper = mount(<UnguessingUI />);
-    wrapper.setState({ fileName: "file.jpg" });
-    const instance = wrapper.instance() as UnguessingUI;
-    const spy = jest.spyOn(instance, "updateTranslateXHandler");
-    wrapper.instance().forceUpdate();
-    wrapper.find("#updateTranslateXHandler").simulate("change", {
-      target: { value: "10" }
-    });
-    expect(spy).toHaveBeenCalled();
-    expect(wrapper.state("translateX")).toBe(10);
-  });
-  test.skip("should change updateTranslateYHandler state", () => {
-    const wrapper = mount(<UnguessingUI />);
-    wrapper.setState({ fileName: "file.jpg" });
-    const instance = wrapper.instance() as UnguessingUI;
-    const spy = jest.spyOn(instance, "updateTranslateYHandler");
-    wrapper.instance().forceUpdate();
-    wrapper.find("#updateTranslateYHandler").simulate("change", {
-      target: { value: "10" }
-    });
-    expect(spy).toHaveBeenCalled();
-    expect(wrapper.state("translateY")).toBe(10);
-  });
-
   test("should change opacity state", () => {
-    const wrapper = mount(<UnguessingUI />);
+    const wrapper = mount<{}, State>(<UnguessingUI />);
     wrapper.setState({ fileName: "file.jpg" });
     const instance = wrapper.instance() as UnguessingUI;
     const spy = jest.spyOn(instance, "updateOpacityHandler");
@@ -128,7 +103,7 @@ describe("UnguessingUI", () => {
   });
 
   test("should change scale state", () => {
-    const wrapper = mount(<UnguessingUI />);
+    const wrapper = mount<{}, State>(<UnguessingUI />);
     wrapper.setState({ fileName: "file.jpg" });
     const instance = wrapper.instance() as UnguessingUI;
     const spy = jest.spyOn(instance, "updateScaleHandler");
@@ -141,7 +116,7 @@ describe("UnguessingUI", () => {
   });
 
   test("should reset state", () => {
-    const wrapper = mount(<UnguessingUI />);
+    const wrapper = mount<{}, State>(<UnguessingUI />);
     wrapper.setState({ fileName: "file.jpg" });
     const instance = wrapper.instance() as UnguessingUI;
     const spy = jest.spyOn(instance, "resetStoreHandler");
