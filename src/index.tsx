@@ -32,17 +32,23 @@ export class UnguessingUI extends React.Component<Props, Store> {
     const imageElement = document.getElementById("image");
     imageElement &&
       imageElement.addEventListener("mousedown", (event: MouseEvent) =>
-        this.updateDragEnableValue(event, true)
+        this.updateMousePositionToDrag(event, true)
       );
     imageElement &&
       imageElement.addEventListener("mouseup", (event: MouseEvent) =>
-        this.updateDragEnableValue(event, false)
+        this.updateMousePositionToDrag(event, false)
       );
 
     window.addEventListener("mousemove", this.updateBackgroundPositionByHand);
   }
 
-  updateDragEnableValue = (event: MouseEvent, dragByMouse: boolean) => {
+  componentDidUpdate(_prevProps: {}, prevState: Store) {
+    if (prevState !== this.state) {
+      SetFromLocalStorage(this.state);
+    }
+  }
+
+  updateMousePositionToDrag = (event: MouseEvent, dragByMouse: boolean) => {
     this.setState({
       dragByMouse,
       mouseX: dragByMouse ? event.pageX : 0,
@@ -64,12 +70,6 @@ export class UnguessingUI extends React.Component<Props, Store> {
       });
     }
   };
-
-  componentDidUpdate(_prevProps: {}, prevState: Store) {
-    if (prevState !== this.state) {
-      SetFromLocalStorage(this.state);
-    }
-  }
 
   resetStoreHandler = () => {
     this.setState({
@@ -200,7 +200,7 @@ export class UnguessingUI extends React.Component<Props, Store> {
             {!!fileName && (
               <button
                 onClick={this.enableDragImage}
-                className={`${styles.btn} ${
+                className={`btn-primary ${styles.btn} ${
                   enableDrag ? styles.btn_primary_dark : styles.btn_primary
                 }`}
                 style={{
