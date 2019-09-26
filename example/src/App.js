@@ -4,7 +4,7 @@ import UnGuessingUI from "unguessing-ui";
 
 class App extends Component {
   render() {
-    return <p>Teste</p>;
+    return <p>Example</p>;
   }
 }
 
