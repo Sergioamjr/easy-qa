@@ -6,11 +6,11 @@
 
 ## Why
 
-Have you ever tried to create a layout but it didn't look the same? We have a design, great tools to debug, we know CSS but it's looks different yet. Perhaps is because we're worry about the implementation, sprint's deadline, integration with backend or just because we need to switch our eyes between screens and browsers tabs over and over again. It's too much to care about it and create the perfect UI.
+Have you ever tried to create a layout but it don't look the same? You have a design to guide you and great tools to inspect elements, you know CSS but it's looks different yet. Perhaps is because you're worried about the implementation, sprint's deadline, integration with backend services or just because you need to switch your eyes between screens and browsers tabs over and over again. It's too much to care about it and create the perfect UI.
 
 UnGuessing UI was made to help you to create the perfect screen/component UI, looking the differences between your screen and the design while you're coding and your application is reloaded.
 
-You just need to upload an image file and than controll its opacity, position and scale.
+You just need to upload an image file of your layout or component UI and than control its opacity, scale and position dragging it over the screen.
 
 ## Demo
 
@@ -43,7 +43,7 @@ export default UnGuessingUI(YourPage)
 
 ## Limitations
 
-UnGuessing UI uses the localstorage to store your image, parsed into Base64, and the previous settings. By default, the size limit in Localstorage is 10MB. If the cota is exceeded, an warning is showed in console and will not save/update the data in localstorage. In this case, you'll need to decrease the size or quality of your image file.
+UnGuessing UI uses the localstorage to store your image, parsed into Base64, and the previous settings. By default, the size limit in Localstorage's browsers is 10MB. If the cota is exceeded, an warning is showed in console and will not save/update the data in localstorage. In this case, you'll need to compress, decrease the size or quality of your image file. You can use online services like [TinyPNG](https://tinypng.com) or [TinyJPG](https://tinyjpg.com/) to do this.
 
 ## License
 
