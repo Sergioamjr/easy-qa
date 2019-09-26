@@ -3,11 +3,11 @@
  */
 
 import * as React from "react";
-import { Store, defaultState } from "./types";
+import { State, defaultState } from "./types";
 import closeIcon from "./assets/close.svg";
 import arrowUp from "./assets/rounded-up.svg";
 import arrowDown from "./assets/rounded-down.svg";
-import handDrag from "./assets/hand-drag.svg";
+import check from "./assets/check.svg";
 import hand from "./assets/hand.svg";
 import {
   GetFromLocalStorage,
@@ -18,7 +18,7 @@ import styles from "./styles.css";
 
 interface Props {}
 
-export class UnguessingUI extends React.Component<Props, Store> {
+export class UnguessingUI extends React.Component<Props, State> {
   state = {
     ...defaultState
   };
@@ -42,31 +42,43 @@ export class UnguessingUI extends React.Component<Props, Store> {
     window.addEventListener("mousemove", this.updateBackgroundPositionByHand);
   }
 
-  componentDidUpdate(_prevProps: {}, prevState: Store) {
-    if (prevState !== this.state) {
-      SetFromLocalStorage(this.state);
+  componentDidUpdate(_prevProps: {}, prevState: State) {
+    const { mouseEvents, ...prevStateWithMouseEvents } = prevState;
+    const {
+      mouseEvents: mouseEvents_,
+      ...currentlyStateWithMouseEvents
+    } = this.state;
+    if (prevStateWithMouseEvents !== currentlyStateWithMouseEvents) {
+      SetFromLocalStorage(currentlyStateWithMouseEvents);
     }
   }
 
   updateMousePositionToDrag = (event: MouseEvent, dragByMouse: boolean) => {
     this.setState({
-      dragByMouse,
-      mouseX: dragByMouse ? event.pageX : 0,
-      mouseY: dragByMouse ? event.pageY : 0
+      mouseEvents: {
+        ...this.state.mouseEvents,
+        dragByMouse,
+        mouseX: dragByMouse ? event.pageX : 0,
+        mouseY: dragByMouse ? event.pageY : 0
+      }
     });
   };
 
   updateBackgroundPositionByHand = (event: MouseEvent) => {
-    if (this.state.dragByMouse && this.state.enableDrag) {
-      const differenceX = event.pageX - this.state.mouseX;
-      const differenceY = event.pageY - this.state.mouseY;
-      this.setState(({ translateX, translateY, mouseX, mouseY }) => {
-        return {
-          translateY: differenceY + translateY,
-          translateX: differenceX + translateX,
-          mouseX: mouseX + differenceX,
-          mouseY: mouseY + differenceY
-        };
+    if (
+      this.state.mouseEvents.dragByMouse &&
+      this.state.mouseEvents.enableDrag
+    ) {
+      const differenceX = event.pageX - this.state.mouseEvents.mouseX;
+      const differenceY = event.pageY - this.state.mouseEvents.mouseY;
+      this.setState({
+        translateY: differenceY + this.state.translateY,
+        translateX: differenceX + this.state.translateX,
+        mouseEvents: {
+          ...this.state.mouseEvents,
+          mouseX: this.state.mouseEvents.mouseX + differenceX,
+          mouseY: this.state.mouseEvents.mouseY + differenceY
+        }
       });
     }
   };
@@ -79,10 +91,11 @@ export class UnguessingUI extends React.Component<Props, Store> {
   };
 
   enableDragImage = () => {
-    this.setState(({ enableDrag }) => {
-      return {
-        enableDrag: !enableDrag
-      };
+    this.setState({
+      mouseEvents: {
+        ...this.state.mouseEvents,
+        enableDrag: !this.state.mouseEvents.enableDrag
+      }
     });
   };
 
@@ -137,7 +150,7 @@ export class UnguessingUI extends React.Component<Props, Store> {
     const {
       fileName,
       image,
-      enableDrag,
+      mouseEvents: { enableDrag },
       width,
       height,
       translateX,
@@ -204,7 +217,7 @@ export class UnguessingUI extends React.Component<Props, Store> {
                   enableDrag ? styles.btn_primary_dark : styles.btn_primary
                 }`}
                 style={{
-                  backgroundImage: `url(${!enableDrag ? handDrag : hand})`
+                  backgroundImage: `url(${enableDrag ? check : hand})`
                 }}
               >
                 Enable Drag

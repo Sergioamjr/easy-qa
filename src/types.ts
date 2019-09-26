@@ -1,4 +1,11 @@
-export interface Store {
+export interface MouseEventsTypes {
+  enableDrag: boolean;
+  dragByMouse: boolean;
+  mouseX: number;
+  mouseY: number;
+}
+
+export interface UnguessingUITypes {
   fileName: string;
   image: string;
   width: number;
@@ -8,17 +15,19 @@ export interface Store {
   translateY: number;
   scale: number;
   isOpen: boolean;
-  enableDrag: boolean;
-  dragByMouse: boolean;
-  mouseX: number;
-  mouseY: number;
+}
+
+export interface State extends UnguessingUITypes {
+  mouseEvents: MouseEventsTypes;
 }
 
 export const defaultState = {
-  mouseX: 0,
-  mouseY: 0,
-  dragByMouse: false,
-  enableDrag: false,
+  mouseEvents: {
+    mouseX: 0,
+    mouseY: 0,
+    dragByMouse: false,
+    enableDrag: false
+  },
   fileName: "",
   image: "",
   width: 0,

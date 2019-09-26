@@ -1,6 +1,7 @@
 import React from "react";
-import ConnectWithUnguessingUI, { UnguessingUI } from ".";
 import { mount } from "enzyme";
+import ConnectWithUnguessingUI, { UnguessingUI } from ".";
+import { State } from "./types";
 
 const mouseEventProperties = new MouseEvent("mousedown", {});
 
@@ -150,15 +151,15 @@ describe("UnguessingUI", () => {
   });
 
   test("should enable/disabled drag event", () => {
-    const wrapper = mount(<UnguessingUI />);
-    expect(wrapper.state("enableDrag")).toBeFalsy();
+    const wrapper = mount<{}, State>(<UnguessingUI />);
+    expect(wrapper.state().mouseEvents.enableDrag).toBeFalsy();
     wrapper.setState({ fileName: "file.jpg" });
     const instance = wrapper.instance() as UnguessingUI;
     const spy = jest.spyOn(instance, "enableDragImage");
     wrapper.instance().forceUpdate();
     wrapper.find(".btn-primary").simulate("click");
     expect(spy).toHaveBeenCalled();
-    expect(wrapper.state("enableDrag")).toBeTruthy();
+    expect(wrapper.state().mouseEvents.enableDrag).not.toBeFalsy();
   });
 
   test("should update mouse coordinates", () => {
@@ -167,17 +168,17 @@ describe("UnguessingUI", () => {
       pageX: 10,
       pageY: 20
     };
-    const wrapper = mount(<UnguessingUI />);
-    expect(wrapper.state("mouseX")).toBe(0);
-    expect(wrapper.state("mouseY")).toBe(0);
+    const wrapper = mount<{}, State>(<UnguessingUI />);
+    expect(wrapper.state().mouseEvents.mouseX).toBe(0);
+    expect(wrapper.state().mouseEvents.mouseY).toBe(0);
     expect(wrapper.find("#image")).toHaveLength(1);
     const instance = wrapper.instance() as UnguessingUI;
     instance.updateMousePositionToDrag(mockProperties, true);
-    expect(wrapper.state("mouseX")).toBe(10);
-    expect(wrapper.state("mouseY")).toBe(20);
+    expect(wrapper.state().mouseEvents.mouseX).toBe(10);
+    expect(wrapper.state().mouseEvents.mouseY).toBe(20);
     instance.updateMousePositionToDrag(mockProperties, false);
-    expect(wrapper.state("mouseX")).toBe(0);
-    expect(wrapper.state("mouseY")).toBe(0);
+    expect(wrapper.state().mouseEvents.mouseX).toBe(0);
+    expect(wrapper.state().mouseEvents.mouseY).toBe(0);
   });
 
   test("should update image position dragging by mouse", () => {
@@ -186,22 +187,24 @@ describe("UnguessingUI", () => {
       pageX: 115,
       pageY: 222
     };
-    const wrapper = mount(<UnguessingUI />);
+    const wrapper = mount<{}, State>(<UnguessingUI />);
     wrapper.setState({
-      dragByMouse: true,
-      enableDrag: true,
-      mouseX: 100,
-      mouseY: 200
+      mouseEvents: {
+        dragByMouse: true,
+        enableDrag: true,
+        mouseX: 100,
+        mouseY: 200
+      }
     });
     expect(wrapper.state("translateX")).toBe(0);
     expect(wrapper.state("translateY")).toBe(0);
-    expect(wrapper.state("mouseX")).toBe(100);
-    expect(wrapper.state("mouseY")).toBe(200);
+    expect(wrapper.state().mouseEvents.mouseX).toBe(100);
+    expect(wrapper.state().mouseEvents.mouseY).toBe(200);
     const instance = wrapper.instance() as UnguessingUI;
     instance.updateBackgroundPositionByHand(mockProperties);
     expect(wrapper.state("translateX")).toBe(115 - 100);
     expect(wrapper.state("translateY")).toBe(222 - 200);
-    expect(wrapper.state("mouseX")).toBe(100 + 115 - 100);
-    expect(wrapper.state("mouseY")).toBe(200 + 222 - 200);
+    expect(wrapper.state().mouseEvents.mouseX).toBe(100 + 115 - 100);
+    expect(wrapper.state().mouseEvents.mouseY).toBe(200 + 222 - 200);
   });
 });
