@@ -208,7 +208,7 @@ export class UnguessingUI extends React.Component<Props, State> {
           </button>
           <div className={styles.d_flex}>
             <label id="file-upload-label" className={styles.btn}>
-              {fileName ? `${fileName} selected` : "Select Layout"}
+              {fileName ? `${fileName} selected` : "Select Design"}
               <input
                 id="file-upload"
                 type="file"
