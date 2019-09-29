@@ -1,8 +1,8 @@
 :root {
-  --theme: #333;
-  --themeDark: #1d1d1d;
-  --primary: #368476;
-  --primaryDark: #1f1f1f;
+  --unguessingUITheme: #333;
+  --unguessingUIThemeDark: #1d1d1d;
+  --unguessingUIprimary: #368476;
+  --unguessingUIprimaryDark: #1f1f1f;
 }
 
 .image_background {
@@ -24,8 +24,8 @@
   margin: 0;
   padding: 0;
   position: relative;
-  background: var(--theme);
-  box-shadow: 3px 3px 2px var(--themeDark);
+  background: var(--unguessingUITheme);
+  box-shadow: 3px 3px 2px var(--unguessingUIThemeDark);
   min-width: 320px;
   max-width: 320px;
   position: fixed;
@@ -40,7 +40,7 @@
 }
 
 .input_box_with_image {
-  transform: translateY(180px);
+  transform: translateY(200px);
 }
 
 .input_box.input_box_actived {
@@ -70,9 +70,9 @@
   top: -70px;
   cursor: pointer;
   right: 0;
-  box-shadow: 3px 3px 2px var(--themeDark);
+  box-shadow: 3px 3px 2px var(--unguessingUIThemeDark);
   border-radius: 50%;
-  background-color: var(--theme);
+  background-color: var(--unguessingUITheme);
   width: 45px;
   height: 45px;
   border: 0;
@@ -87,8 +87,8 @@
   overflow: hidden;
   text-overflow: ellipsis;
   font-family: sans-serif;
-  background: var(--primary);
-  box-shadow: 3px 3px 2px var(--themeDark);
+  background: var(--unguessingUIprimary);
+  box-shadow: 3px 3px 2px var(--unguessingUIThemeDark);
   width: 100%;
   cursor: pointer;
   display: block;
@@ -108,7 +108,7 @@
   background-color: #ad1c1c;
   max-width: 40px;
   margin-left: 15px;
-  box-shadow: 3px 3px var(--themeDark);
+  box-shadow: 3px 3px var(--unguessingUIThemeDark);
 }
 
 .btn.btn_primary {
@@ -117,10 +117,10 @@
   background-size: 20px;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: var(--primary);
+  background-color: var(--unguessingUIprimary);
   max-width: 40px;
   margin-left: 15px;
-  box-shadow: 3px 3px 2px var(--themeDark);
+  box-shadow: 3px 3px 2px var(--unguessingUIThemeDark);
 }
 
 .btn.btn_primary_dark {
@@ -129,10 +129,10 @@
   background-size: 20px;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: var(--primaryDark);
+  background-color: var(--unguessingUIprimaryDark);
   max-width: 40px;
   margin-left: 15px;
-  box-shadow: 3px 3px 2px var(--themeDark);
+  box-shadow: 3px 3px 2px var(--unguessingUIThemeDark);
 }
 
 .btn input {
