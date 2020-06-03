@@ -19,9 +19,13 @@
     "start": "rollup -c -w",
     "prepare": "yarn run test && yarn run build",
     "predeploy": "cd example && yarn install && yarn run build",
-    "deploy": "gh-pages -d example/build"
+    "deploy": "gh-pages -d example/build",
+    "eslint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@typescript-eslint/parser": "^3.1.0",
+    "styled-components": "^5.1.1"
+  },
   "peerDependencies": {
     "prop-types": "^15.5.4",
     "react": "^15.0.0 || ^16.0.0",
@@ -34,6 +38,7 @@
     "@types/jest": "^23.1.5",
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.0.5",
+    "@typescript-eslint/eslint-plugin": "^3.1.0",
     "babel-core": "^6.26.3",
     "babel-runtime": "^6.26.0",
     "cross-env": "^5.1.4",
@@ -42,7 +47,7 @@
     "gh-pages": "^1.2.0",
     "husky": "^3.0.5",
     "install": "^0.13.0",
-    "npm": "^6.11.3",
+    "npm": "^6.14.5",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-scripts-ts": "^4.0.8",
@@ -54,7 +59,7 @@
     "rollup-plugin-postcss": "^2.0.3",
     "rollup-plugin-typescript2": "^0.24.2",
     "rollup-plugin-url": "^1.4.0",
-    "typescript": "^2.8.3"
+    "typescript": "^3.9.3"
   },
   "files": [
     "dist"

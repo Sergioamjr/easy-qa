@@ -3,6 +3,7 @@
  */
 
 import * as React from "react";
+// eslint-disable-next-line no-unused-vars
 import { State, defaultState } from "./types";
 import closeIcon from "./assets/close.svg";
 import arrowUp from "./assets/rounded-up.svg";
@@ -11,7 +12,7 @@ import check from "./assets/check.svg";
 import hand from "./assets/hand.svg";
 import {
   GetFromLocalStorage,
-  SetFromLocalStorage
+  SetFromLocalStorage,
 } from "./services/localstorage";
 
 import styles from "./styles.css";
@@ -20,7 +21,7 @@ interface Props {}
 
 export class UnguessingUI extends React.Component<Props, State> {
   state = {
-    ...defaultState
+    ...defaultState,
   };
 
   componentDidMount() {
@@ -28,7 +29,7 @@ export class UnguessingUI extends React.Component<Props, State> {
 
     this.setState({
       ...this.state,
-      ...stateFromLocalStorage
+      ...stateFromLocalStorage,
     });
     const imageElement = document.getElementById("image");
     imageElement &&
@@ -64,8 +65,8 @@ export class UnguessingUI extends React.Component<Props, State> {
         ...this.state.mouseEvents,
         dragByMouse,
         mouseX: dragByMouse ? event.pageX : 0,
-        mouseY: dragByMouse ? event.pageY : 0
-      }
+        mouseY: dragByMouse ? event.pageY : 0,
+      },
     });
   };
 
@@ -82,8 +83,8 @@ export class UnguessingUI extends React.Component<Props, State> {
         mouseEvents: {
           ...this.state.mouseEvents,
           mouseX: this.state.mouseEvents.mouseX + differenceX,
-          mouseY: this.state.mouseEvents.mouseY + differenceY
-        }
+          mouseY: this.state.mouseEvents.mouseY + differenceY,
+        },
       });
     }
   };
@@ -91,7 +92,7 @@ export class UnguessingUI extends React.Component<Props, State> {
   resetStoreHandler = () => {
     this.setState({
       ...defaultState,
-      isOpen: true
+      isOpen: true,
     });
   };
 
@@ -99,15 +100,15 @@ export class UnguessingUI extends React.Component<Props, State> {
     this.setState({
       mouseEvents: {
         ...this.state.mouseEvents,
-        enableDrag: !this.state.mouseEvents.enableDrag
-      }
+        enableDrag: !this.state.mouseEvents.enableDrag,
+      },
     });
   };
 
   toggleBoxStateHandler = () => {
     this.setState(({ isOpen }) => {
       return {
-        isOpen: !isOpen
+        isOpen: !isOpen,
       };
     });
   };
@@ -129,7 +130,7 @@ export class UnguessingUI extends React.Component<Props, State> {
           isOpen: true,
           image: typeof reader.result === "string" ? reader.result : "",
           width: newImg.width,
-          height: newImg.height
+          height: newImg.height,
         });
       };
     };
@@ -140,14 +141,14 @@ export class UnguessingUI extends React.Component<Props, State> {
     const { value } = event.target;
     const valueToInt = parseInt(value, 10);
     this.setState({
-      opacity: valueToInt / 100
+      opacity: valueToInt / 100,
     });
   };
 
   updateScaleHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     this.setState({
-      scale: parseInt(value, 10) / 100
+      scale: parseInt(value, 10) / 100,
     });
   };
 
@@ -162,7 +163,7 @@ export class UnguessingUI extends React.Component<Props, State> {
       translateY,
       scale,
       opacity,
-      isOpen
+      isOpen,
     } = this.state;
     return (
       <div>
@@ -175,7 +176,7 @@ export class UnguessingUI extends React.Component<Props, State> {
             height,
             opacity,
             transform: `translate(${translateX}px, ${translateY}px) scale(${scale})`,
-            backgroundImage: `url(${image})`
+            backgroundImage: `url(${image})`,
           }}
         />
         {this.props.children}
@@ -199,7 +200,7 @@ export class UnguessingUI extends React.Component<Props, State> {
               isOpen ? "input-box-change-status-actived" : ""
             }`}
             style={{
-              backgroundImage: `url(${isOpen ? arrowDown : arrowUp})`
+              backgroundImage: `url(${isOpen ? arrowDown : arrowUp})`,
             }}
             id="toggle-btn"
             onClick={this.toggleBoxStateHandler}
@@ -222,7 +223,7 @@ export class UnguessingUI extends React.Component<Props, State> {
                   enableDrag ? styles.btn_primary_dark : styles.btn_primary
                 }`}
                 style={{
-                  backgroundImage: `url(${enableDrag ? check : hand})`
+                  backgroundImage: `url(${enableDrag ? check : hand})`,
                 }}
               >
                 Enable Drag

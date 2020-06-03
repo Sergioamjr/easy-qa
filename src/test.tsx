@@ -15,7 +15,7 @@ describe("UnguessingUI", () => {
   test("should pass all props to target component", () => {
     const props = {
       isLogged: true,
-      userName: "admin"
+      userName: "admin",
     };
     const ToConnect = () => {
       return <p>ToConnect</p>;
@@ -84,7 +84,7 @@ describe("UnguessingUI", () => {
     expect(spy).toHaveBeenCalled();
     expect(
       instance.updateFileHandler({
-        target: { files: [file] }
+        target: { files: [file] },
       })
     ).toBeFalsy();
   });
@@ -96,7 +96,7 @@ describe("UnguessingUI", () => {
     const spy = jest.spyOn(instance, "updateOpacityHandler");
     wrapper.instance().forceUpdate();
     wrapper.find("#updateOpacityHandler").simulate("change", {
-      target: { value: "10" }
+      target: { value: "10" },
     });
     expect(spy).toHaveBeenCalled();
     expect(wrapper.state("opacity")).toBe(10 / 100);
@@ -109,7 +109,7 @@ describe("UnguessingUI", () => {
     const spy = jest.spyOn(instance, "updateScaleHandler");
     wrapper.instance().forceUpdate();
     wrapper.find("#updateScaleHandler").simulate("change", {
-      target: { value: "10" }
+      target: { value: "10" },
     });
     expect(spy).toHaveBeenCalled();
     expect(wrapper.state("scale")).toBe(10 / 100);
@@ -141,7 +141,7 @@ describe("UnguessingUI", () => {
     const mockProperties = {
       ...mouseEventProperties,
       pageX: 10,
-      pageY: 20
+      pageY: 20,
     };
     const wrapper = mount<{}, State>(<UnguessingUI />);
     expect(wrapper.state().mouseEvents.mouseX).toBe(0);
@@ -160,7 +160,7 @@ describe("UnguessingUI", () => {
     const mockProperties = {
       ...mouseEventProperties,
       pageX: 115,
-      pageY: 222
+      pageY: 222,
     };
     const wrapper = mount<{}, State>(<UnguessingUI />);
     wrapper.setState({
@@ -168,8 +168,8 @@ describe("UnguessingUI", () => {
         dragByMouse: true,
         enableDrag: true,
         mouseX: 100,
-        mouseY: 200
-      }
+        mouseY: 200,
+      },
     });
     expect(wrapper.state("translateX")).toBe(0);
     expect(wrapper.state("translateY")).toBe(0);
