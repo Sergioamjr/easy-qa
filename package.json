@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "postinstall": "link-module-alias"
   },
   "repository": {
     "type": "git",
@@ -35,6 +36,11 @@
     "@storybook/addon-links": "^6.0.21",
     "@storybook/react": "^6.0.21",
     "babel-loader": "^8.1.0",
+    "link-module-alias": "^1.2.0",
     "react-is": "^16.13.1"
+  },
+  "_moduleAliases": {
+    "~types": "src/types",
+    "~components": "src/components"
   }
 }
