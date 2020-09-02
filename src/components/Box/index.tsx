@@ -1,5 +1,5 @@
 import React from "react";
-import { Rnd, DraggableData, RndResizeCallback } from "react-rnd";
+import { Rnd } from "react-rnd";
 import * as S from "./style";
 import { BoxProps } from "~types";
 

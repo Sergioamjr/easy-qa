@@ -1,2 +1,4 @@
 dist/
 node_modules/
+v1/
+src/types/
