@@ -13,3 +13,10 @@ export type BoxProps = {
   onDragStop: DraggableEventHandler;
   onResize: RndResizeCallback;
 };
+
+export type ImageType = {
+  fileName: string;
+  image: string;
+  width: number;
+  height: number;
+};

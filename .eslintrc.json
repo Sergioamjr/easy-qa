@@ -6,7 +6,12 @@
     "jest": true
   },
   "parser": "@typescript-eslint/parser",
-  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "plugins": ["@typescript-eslint"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
