@@ -13,6 +13,16 @@ const Page = (): JSX.Element => {
   const onResize = (e, direction, ref) => {
     setSize({ width: ref.style.width, height: ref.style.height });
   };
+
+  const onUploadImage = (image: ImageType) => {
+    const { width, height } = image;
+    setSize({
+      width,
+      height,
+    });
+    setImage(image);
+  };
+
   return (
     <div>
       <p>Page</p>
@@ -23,7 +33,7 @@ const Page = (): JSX.Element => {
         size={size}
         position={position}
       />
-      <Uploader onUploadImage={setImage} />
+      <Uploader onUploadImage={onUploadImage} />
     </div>
   );
 };
