@@ -12,6 +12,7 @@ export type BoxProps = {
   position: Position;
   onDragStop: DraggableEventHandler;
   onResize: RndResizeCallback;
+  image?: string;
 };
 
 export type ImageType = {
@@ -19,4 +20,8 @@ export type ImageType = {
   image: string;
   width: number;
   height: number;
+};
+
+export type UploaderProps = {
+  onUploadImage: (e: ImageType) => void;
 };

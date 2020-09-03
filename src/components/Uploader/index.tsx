@@ -1,17 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import * as S from "./style";
 import useParseImageInto64Base from "~hooks/useParseImageInto64Base";
+import { UploaderProps } from "~types";
 
-const Uploader = () => {
-  const [image, setImage] = useState(null);
+const Uploader = ({ onUploadImage }: UploaderProps): JSX.Element => {
   const updateFileHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.persist();
     useParseImageInto64Base(event, (e) => {
-      setImage(e);
+      onUploadImage(e);
     });
   };
-
-  console.log(image);
 
   return (
     <S.Uploader>
