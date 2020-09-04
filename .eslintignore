@@ -2,3 +2,4 @@ dist/
 node_modules/
 v1/
 src/types/
+src/**/*.stories.tsx

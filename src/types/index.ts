@@ -8,6 +8,7 @@ export type DraggableEventHandler = (
 ) => void | false;
 
 export type BoxProps = {
+  opacity: number;
   size: Size;
   position: Position;
   onDragStop: DraggableEventHandler;
