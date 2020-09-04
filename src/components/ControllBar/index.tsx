@@ -18,7 +18,7 @@ const ControllBar = ({
     return null;
   }
   return (
-    <div>
+    <S.Controllers>
       <S.SmallBtn onClick={() => onControllClick("RESET_SIZE")}>
         Resize
       </S.SmallBtn>
@@ -30,7 +30,7 @@ const ControllBar = ({
         max="100"
       />
       <S.SmallBtn onClick={() => onControllClick("RESET")}>Remove</S.SmallBtn>
-    </div>
+    </S.Controllers>
   );
 };
 

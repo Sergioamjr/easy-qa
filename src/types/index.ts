@@ -9,7 +9,7 @@ export type DraggableEventHandler = (
 
 export type BoxProps = {
   opacity: number;
-  size: Size;
+  size: Partial<Size>;
   position: Position;
   onDragStop: DraggableEventHandler;
   onResize: RndResizeCallback;

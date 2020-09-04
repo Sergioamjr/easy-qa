@@ -11,3 +11,9 @@ export const SmallBtn = styled.button`
   cursor: pointer;
   text-decoration: none;
 `;
+
+export const Controllers = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+`;

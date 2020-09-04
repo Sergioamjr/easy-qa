@@ -7,8 +7,8 @@ import { Size, Position, ImageType } from "~types";
 const Page = (): JSX.Element => {
   const [image, setImage] = useState<Partial<ImageType>>({});
   const [opacity, setOpacity] = useState(1);
-  const [position, setPosition] = useState<Position>({ x: 10, y: 20 });
-  const [size, setSize] = useState<Size>({ width: 200, height: 200 });
+  const [position, setPosition] = useState<Position>({ x: 0, y: 0 });
+  const [size, setSize] = useState<Partial<Size>>({});
   const onDragStop = (e, { x, y }) => {
     setPosition({ x, y });
   };
@@ -29,12 +29,15 @@ const Page = (): JSX.Element => {
     if (type === "RESET_SIZE") {
       const { width, height } = image;
       setSize({ width, height });
-      setPosition({ x: 10, y: 20 });
     }
 
     if (type === "RESET") {
       setImage({});
+      setSize({});
     }
+
+    setOpacity(1);
+    setPosition({ x: 0, y: 0 });
   };
 
   const onChangeOpacity = (event: React.ChangeEvent<HTMLInputElement>) => {
