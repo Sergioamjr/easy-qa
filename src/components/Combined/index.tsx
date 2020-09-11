@@ -7,7 +7,11 @@ import { CleanLocalStorage } from "~localstorage";
 import useSetAndGetOnLocalstorageOnMounting from "~hooks/useSetAndGetOnLocalstorageOnMounting";
 import * as S from "./style";
 
-const Page = (): JSX.Element => {
+type Props = {
+  children: React.ReactNode;
+};
+
+const Page = ({ children }: Props): JSX.Element => {
   const [image, setImage] = useState<Partial<ImageType>>({});
   const [opacity, setOpacity] = useState(0.5);
   const [position, setPosition] = useState<Position>({ x: 0, y: 0 });
@@ -24,10 +28,10 @@ const Page = (): JSX.Element => {
     setSize,
   });
 
-  const onDragStop = (e, { x, y }) => {
+  const onDragStop = (_e, { x, y }) => {
     setPosition({ x, y });
   };
-  const onResize = (e, direction, ref) => {
+  const onResize = (_e, _direction, ref) => {
     setSize({ width: ref.style.width, height: ref.style.height });
   };
 
@@ -64,7 +68,7 @@ const Page = (): JSX.Element => {
 
   return (
     <div>
-      <p>Page</p>
+      {children}
       <Box
         image={image.image}
         onResize={onResize}

@@ -2,8 +2,10 @@
   "name": "unguessing-ui",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
   "scripts": {
+    "build": "rollup -c",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "npm run lint -- --fix",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -33,10 +35,13 @@
   },
   "devDependencies": {
     "@babel/core": "^7.11.5",
+    "@rollup/plugin-commonjs": "^15.0.0",
+    "@rollup/plugin-url": "^5.0.1",
     "@storybook/addon-actions": "^6.0.21",
     "@storybook/addon-essentials": "^6.0.21",
     "@storybook/addon-links": "^6.0.21",
     "@storybook/react": "^6.0.21",
+    "@svgr/rollup": "^5.4.0",
     "@typescript-eslint/eslint-plugin": "^4.0.1",
     "@typescript-eslint/parser": "^4.0.1",
     "babel-loader": "^8.1.0",
@@ -45,7 +50,12 @@
     "husky": "^4.2.5",
     "link-module-alias": "^1.2.0",
     "lint-staged": "^10.2.13",
-    "react-is": "^16.13.1"
+    "react-is": "^16.13.1",
+    "rollup": "^2.26.11",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-peer-deps-external": "^2.2.3",
+    "rollup-plugin-postcss": "^3.1.8",
+    "rollup-plugin-typescript2": "^0.27.2"
   },
   "_moduleAliases": {
     "~types": "src/types",

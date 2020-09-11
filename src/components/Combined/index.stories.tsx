@@ -6,4 +6,8 @@ export default {
   component: Combined,
 };
 
-export const Default = () => <Combined />;
+export const Default = () => (
+  <Combined>
+    <p>Olá nova página</p>
+  </Combined>
+);
