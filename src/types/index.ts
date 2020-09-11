@@ -23,6 +23,13 @@ export type ImageType = {
   height: number;
 };
 
+export type ControllBarProps = {
+  onChangeOpacity: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  hasImage: boolean;
+  opacity: number;
+  onControllClick: (e: string) => void;
+};
+
 export type UploaderProps = {
   onUploadImage: (e: ImageType) => void;
 };

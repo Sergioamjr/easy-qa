@@ -50,7 +50,8 @@
   "_moduleAliases": {
     "~types": "src/types",
     "~components": "src/components",
-    "~hooks": "src/hooks"
+    "~hooks": "src/hooks",
+    "~icons": "src/icons"
   },
   "husky": {
     "hooks": {

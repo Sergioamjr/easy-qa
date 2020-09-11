@@ -57,13 +57,16 @@ const Page = (): JSX.Element => {
         position={position}
         opacity={opacity}
       />
-      <ControllBar
-        opacity={opacity}
-        onChangeOpacity={onChangeOpacity}
-        hasImage={!!image.image}
-        onControllClick={onControllClick}
-      />
-      <Uploader onUploadImage={onUploadImage} />
+      {image.image ? (
+        <ControllBar
+          opacity={opacity}
+          onChangeOpacity={onChangeOpacity}
+          hasImage={!!image.image}
+          onControllClick={onControllClick}
+        />
+      ) : (
+        <Uploader onUploadImage={onUploadImage} />
+      )}
     </div>
   );
 };

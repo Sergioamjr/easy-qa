@@ -1,12 +1,7 @@
 import React from "react";
 import * as S from "./style";
-
-type ControllBarProps = {
-  onChangeOpacity: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  hasImage: boolean;
-  opacity: number;
-  onControllClick: (e: string) => void;
-};
+import { Trash, Undo } from "~icons";
+import { ControllBarProps } from "~types";
 
 const ControllBar = ({
   onChangeOpacity,
@@ -20,7 +15,7 @@ const ControllBar = ({
   return (
     <S.Controllers>
       <S.SmallBtn onClick={() => onControllClick("RESET_SIZE")}>
-        Resize
+        <Undo />
       </S.SmallBtn>
       <input
         onChange={onChangeOpacity}
@@ -29,7 +24,9 @@ const ControllBar = ({
         min="0"
         max="100"
       />
-      <S.SmallBtn onClick={() => onControllClick("RESET")}>Remove</S.SmallBtn>
+      <S.SmallBtn onClick={() => onControllClick("RESET")}>
+        <Trash />
+      </S.SmallBtn>
     </S.Controllers>
   );
 };
