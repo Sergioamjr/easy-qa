@@ -51,7 +51,8 @@
     "~types": "src/types",
     "~components": "src/components",
     "~hooks": "src/hooks",
-    "~icons": "src/icons"
+    "~icons": "src/icons",
+    "~localstorage": "src/localstorage"
   },
   "husky": {
     "hooks": {

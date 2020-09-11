@@ -1,14 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Uploader from "~components/Uploader";
 import Box from "~components/Box";
 import ControllBar from "~components/ControllBar";
 import { Size, Position, ImageType } from "~types";
+import {
+  SetLocalStorage,
+  CleanLocalStorage,
+  GetLocalStorage,
+} from "~localstorage";
 
 const Page = (): JSX.Element => {
   const [image, setImage] = useState<Partial<ImageType>>({});
   const [opacity, setOpacity] = useState(1);
   const [position, setPosition] = useState<Position>({ x: 0, y: 0 });
   const [size, setSize] = useState<Partial<Size>>({});
+
+  useEffect(() => {
+    const store = GetLocalStorage();
+    store?.image?.image && setImage(store.image);
+    typeof store?.opacity === "number" && setOpacity(store.opacity);
+    store?.position && setPosition(store.position);
+    store?.size && setSize(store.size);
+  }, []);
+
+  useEffect(() => {
+    if (
+      (size.height, size.width, position.x, position.y, opacity, image.image)
+    ) {
+      SetLocalStorage({
+        size,
+        position,
+        opacity,
+        image,
+      });
+    }
+  }, [size.height, size.width, position.x, position.y, opacity, image.image]);
+
   const onDragStop = (e, { x, y }) => {
     setPosition({ x, y });
   };
@@ -34,6 +61,7 @@ const Page = (): JSX.Element => {
     if (type === "RESET") {
       setImage({});
       setSize({});
+      CleanLocalStorage();
     }
 
     setOpacity(1);

@@ -34,5 +34,7 @@ export type UploaderProps = {
   onUploadImage: (e: ImageType) => void;
 };
 
-export type UnguessingUITypes = ImageType &
-  Pick<BoxProps, "opacity" | "size" | "position">;
+export type UnguessingUITypes = { image: Partial<ImageType> } & Pick<
+  BoxProps,
+  "opacity" | "size" | "position"
+>;

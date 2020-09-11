@@ -1,12 +1,12 @@
 import { UnguessingUITypes } from "~types";
 const key = "UNGUESSING-UI";
 
-export const GetFromLocalStorage = (): UnguessingUITypes => {
+export const GetLocalStorage = (): UnguessingUITypes => {
   const store = window.localStorage.getItem(key) || "{}";
   return JSON.parse(store);
 };
 
-export const SetFromLocalStorage = (store: UnguessingUITypes): void => {
+export const SetLocalStorage = (store: UnguessingUITypes): void => {
   try {
     window.localStorage.setItem(key, JSON.stringify(store));
   } catch (error) {
@@ -16,10 +16,6 @@ export const SetFromLocalStorage = (store: UnguessingUITypes): void => {
   }
 };
 
-export const MergeInLocalStorage = (
-  data: UnguessingUITypes,
-  path: string
-): void => {
-  const prevStorage = GetFromLocalStorage();
-  SetFromLocalStorage({ ...prevStorage, [path]: data });
+export const CleanLocalStorage = (): void => {
+  window.localStorage.clear();
 };
