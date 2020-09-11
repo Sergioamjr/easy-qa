@@ -1,19 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import * as S from "./style";
 import useParseImageInto64Base from "~hooks/useParseImageInto64Base";
-import { UploaderProps } from "~types";
+import { UploaderProps, ImageType } from "~types";
 
 const Uploader = ({ onUploadImage }: UploaderProps): JSX.Element => {
-  const updateFileHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    event.persist();
-    useParseImageInto64Base(event, (e) => {
-      onUploadImage(e);
-    });
-  };
+  const [image, updateFileHandler] = useParseImageInto64Base();
+  useEffect(() => {
+    if (image.fileName && image.height && image.image && image.width) {
+      onUploadImage(image as ImageType);
+    }
+  }, [image.fileName, image.height, image.image, image.width]);
 
   return (
     <S.Uploader>
-      <S.Input onChange={updateFileHandler} type="file" />
+      <S.Input onChange={(e) => updateFileHandler(e)} type="file" />
       Escolha a imagem
     </S.Uploader>
   );
