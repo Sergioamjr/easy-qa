@@ -17,5 +17,5 @@ export const SetLocalStorage = (store: UnguessingUITypes): void => {
 };
 
 export const CleanLocalStorage = (): void => {
-  window.localStorage.clear();
+  window.localStorage.setItem(key, JSON.stringify({}));
 };

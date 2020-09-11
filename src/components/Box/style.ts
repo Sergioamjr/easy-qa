@@ -1,4 +1,9 @@
 import styled from "styled-components";
+import { Rnd as RndBase } from "react-rnd";
+
+export const Rnd = styled(RndBase)`
+  z-index: 9999999;
+`;
 
 export const Content = styled.div<{ image?: string; opacity: number }>`
   background-image: ${({ image }) => `url(${image})`};

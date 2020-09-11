@@ -1,40 +1,28 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Uploader from "~components/Uploader";
 import Box from "~components/Box";
 import ControllBar from "~components/ControllBar";
 import { Size, Position, ImageType } from "~types";
-import {
-  SetLocalStorage,
-  CleanLocalStorage,
-  GetLocalStorage,
-} from "~localstorage";
+import { CleanLocalStorage } from "~localstorage";
+import useSetAndGetOnLocalstorageOnMounting from "~hooks/useSetAndGetOnLocalstorageOnMounting";
+import * as S from "./style";
 
 const Page = (): JSX.Element => {
   const [image, setImage] = useState<Partial<ImageType>>({});
-  const [opacity, setOpacity] = useState(1);
+  const [opacity, setOpacity] = useState(0.5);
   const [position, setPosition] = useState<Position>({ x: 0, y: 0 });
   const [size, setSize] = useState<Partial<Size>>({});
 
-  useEffect(() => {
-    const store = GetLocalStorage();
-    store?.image?.image && setImage(store.image);
-    typeof store?.opacity === "number" && setOpacity(store.opacity);
-    store?.position && setPosition(store.position);
-    store?.size && setSize(store.size);
-  }, []);
-
-  useEffect(() => {
-    if (
-      (size.height, size.width, position.x, position.y, opacity, image.image)
-    ) {
-      SetLocalStorage({
-        size,
-        position,
-        opacity,
-        image,
-      });
-    }
-  }, [size.height, size.width, position.x, position.y, opacity, image.image]);
+  useSetAndGetOnLocalstorageOnMounting({
+    image,
+    setImage,
+    opacity,
+    setOpacity,
+    position,
+    setPosition,
+    size,
+    setSize,
+  });
 
   const onDragStop = (e, { x, y }) => {
     setPosition({ x, y });
@@ -64,7 +52,7 @@ const Page = (): JSX.Element => {
       CleanLocalStorage();
     }
 
-    setOpacity(1);
+    setOpacity(0.5);
     setPosition({ x: 0, y: 0 });
   };
 
@@ -85,16 +73,18 @@ const Page = (): JSX.Element => {
         position={position}
         opacity={opacity}
       />
-      {image.image ? (
-        <ControllBar
-          opacity={opacity}
-          onChangeOpacity={onChangeOpacity}
-          hasImage={!!image.image}
-          onControllClick={onControllClick}
-        />
-      ) : (
-        <Uploader onUploadImage={onUploadImage} />
-      )}
+      <S.Float>
+        {image.image ? (
+          <ControllBar
+            opacity={opacity}
+            onChangeOpacity={onChangeOpacity}
+            hasImage={!!image.image}
+            onControllClick={onControllClick}
+          />
+        ) : (
+          <Uploader onUploadImage={onUploadImage} />
+        )}
+      </S.Float>
     </div>
   );
 };

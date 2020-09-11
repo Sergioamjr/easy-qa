@@ -1,5 +1,4 @@
 import React from "react";
-import { Rnd } from "react-rnd";
 import * as S from "./style";
 import { BoxProps } from "~types";
 
@@ -13,9 +12,9 @@ const Box = ({
     return null;
   }
   return (
-    <Rnd size={size} {...props}>
+    <S.Rnd size={size} {...props}>
       <S.Content opacity={opacity} image={image} />
-    </Rnd>
+    </S.Rnd>
   );
 };
 
