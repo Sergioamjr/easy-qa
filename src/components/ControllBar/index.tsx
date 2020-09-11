@@ -17,13 +17,16 @@ const ControllBar = ({
       <S.SmallBtn onClick={() => onControllClick("RESET_SIZE")}>
         <Undo />
       </S.SmallBtn>
-      <input
-        onChange={onChangeOpacity}
-        value={opacity * 100}
-        type="range"
-        min="0"
-        max="100"
-      />
+      <S.Label>
+        Opacidade
+        <input
+          onChange={onChangeOpacity}
+          value={opacity * 100}
+          type="range"
+          min="0"
+          max="100"
+        />
+      </S.Label>
       <S.SmallBtn onClick={() => onControllClick("RESET")}>
         <Trash />
       </S.SmallBtn>

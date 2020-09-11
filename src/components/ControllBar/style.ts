@@ -17,3 +17,15 @@ export const Controllers = styled.div`
   align-items: center;
   margin-bottom: 10px;
 `;
+
+export const Label = styled.label`
+  display: flex;
+  flex-direction: column;
+  font-family: sans-serif;
+  font-size: 14px;
+  color: #333;
+  padding: 0 5px;
+  input {
+    margin: 0;
+  }
+`;
