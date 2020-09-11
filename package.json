@@ -1,7 +1,13 @@
 {
   "name": "unguessing-ui",
   "version": "1.0.0",
-  "description": "",
+  "files": [
+    "dist"
+  ],
+  "description": "Create precis UI without guessing CSS's proprieties.",
+  "author": "Sergioamjr",
+  "license": "MIT",
+  "jsnext:main": "dist/index.es.js",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "scripts": {
@@ -18,8 +24,6 @@
     "url": "git+https://github.com/Sergioamjr/unguessing-ui.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/Sergioamjr/unguessing-ui/issues"
   },
