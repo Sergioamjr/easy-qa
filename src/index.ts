@@ -1,1 +1,1 @@
-export { default } from "~components/Combined";
+export { default } from "./components/Combined";

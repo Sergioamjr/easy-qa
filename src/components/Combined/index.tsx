@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import Uploader from "~components/Uploader";
-import Box from "~components/Box";
-import ControllBar from "~components/ControllBar";
-import { Size, Position, ImageType } from "~types";
-import { CleanLocalStorage } from "~localstorage";
-import useSetAndGetOnLocalstorageOnMounting from "~hooks/useSetAndGetOnLocalstorageOnMounting";
+import Uploader from "./../../components/Uploader";
+import Box from "./../../components/Box";
+import ControllBar from "./../../components/ControllBar";
+import { Size, Position, ImageType } from "./../../types";
+import { CleanLocalStorage } from "./../../localstorage";
+import useSetAndGetOnLocalstorageOnMounting from "./../../hooks/useSetAndGetOnLocalstorageOnMounting";
 import * as S from "./style";
 
 type Props = {

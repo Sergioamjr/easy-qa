@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import * as S from "./style";
-import useParseImageInto64Base from "~hooks/useParseImageInto64Base";
-import { UploaderProps, ImageType } from "~types";
+import useParseImageInto64Base from "./../../hooks/useParseImageInto64Base";
+import { UploaderProps, ImageType } from "./../../types";
 
 const Uploader = ({ onUploadImage }: UploaderProps): JSX.Element => {
   const [image, updateFileHandler] = useParseImageInto64Base();

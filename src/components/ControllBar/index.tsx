@@ -1,7 +1,7 @@
 import React from "react";
 import * as S from "./style";
-import { Trash, Undo } from "~icons";
-import { ControllBarProps } from "~types";
+import { Trash, Undo } from "./../../icons";
+import { ControllBarProps } from "./../../types";
 
 const ControllBar = ({
   onChangeOpacity,

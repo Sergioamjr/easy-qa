@@ -1,6 +1,6 @@
 import React from "react";
 import * as S from "./style";
-import { BoxProps } from "~types";
+import { BoxProps } from "./../../types";
 
 const Box = ({
   image,

@@ -1,5 +1,5 @@
-import { Size, Position, ImageType } from "~types";
-import { GetLocalStorage, SetLocalStorage } from "~localstorage";
+import { Size, Position, ImageType } from "./../types";
+import { GetLocalStorage, SetLocalStorage } from "./../localstorage";
 import { useEffect } from "react";
 
 type UseSetAndGetOnLocalstorageOnMounting = {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Box from "./";
-import { Size, Position } from "~types";
+import { Size, Position } from "./../../types";
 
 export default {
   title: "Box",
@@ -18,6 +18,7 @@ export const Primary = () => {
   };
   return (
     <Box
+      opacity={1}
       onResize={onResize}
       onDragStop={onDragStop}
       size={size}

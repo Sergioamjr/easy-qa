@@ -1,4 +1,4 @@
-import { UnguessingUITypes } from "~types";
+import { UnguessingUITypes } from "./../types";
 const key = "UNGUESSING-UI";
 
 export const GetLocalStorage = (): UnguessingUITypes => {

@@ -16,8 +16,7 @@
     "lint:fix": "npm run lint -- --fix",
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "postinstall": "link-module-alias"
+    "build-storybook": "build-storybook"
   },
   "repository": {
     "type": "git",
@@ -52,7 +51,6 @@
     "eslint": "^7.8.1",
     "eslint-plugin-react": "^7.20.6",
     "husky": "^4.2.5",
-    "link-module-alias": "^1.2.0",
     "lint-staged": "^10.2.13",
     "react-is": "^16.13.1",
     "rollup": "^2.26.11",
@@ -60,13 +58,6 @@
     "rollup-plugin-peer-deps-external": "^2.2.3",
     "rollup-plugin-postcss": "^3.1.8",
     "rollup-plugin-typescript2": "^0.27.2"
-  },
-  "_moduleAliases": {
-    "~types": "src/types",
-    "~components": "src/components",
-    "~hooks": "src/hooks",
-    "~icons": "src/icons",
-    "~localstorage": "src/localstorage"
   },
   "husky": {
     "hooks": {

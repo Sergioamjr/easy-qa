@@ -1,5 +1,5 @@
 import { ChangeEvent, useState } from "react";
-import { ImageType } from "~types";
+import { ImageType } from "./../types";
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 const useParseImageInto64Base = () => {
