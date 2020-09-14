@@ -1,1 +1,2 @@
-export { default } from "./components/Main";
+export * from "./components/Test";
+export * from "./components/Main";
