@@ -4,6 +4,10 @@
   "files": [
     "dist"
   ],
+  "engines": {
+    "node": ">=8",
+    "npm": ">=5"
+  },
   "description": "Create precis UI without guessing CSS's proprieties.",
   "author": "Sergioamjr",
   "license": "MIT",
