@@ -1,3 +1,1 @@
-import UnguessingUI from "./components/Main";
-
-export default UnguessingUI;
+export { default } from "./components/Main";

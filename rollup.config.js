@@ -11,21 +11,14 @@ export default {
   input: "src/index.ts",
   output: [
     {
-      file: `${dist}/bundle.cjs.js`,
+      file: `${dist}/index.cjs.js`,
       format: "cjs",
       exports: "named",
       sourcemap: true,
     },
     {
-      file: `${dist}/bundle.esm.js`,
+      file: `${dist}/index.esm.js`,
       format: "esm",
-      exports: "named",
-      sourcemap: true,
-    },
-    {
-      name: "UnguessingUI",
-      file: `${dist}/bundle.umd.js`,
-      format: "umd",
       exports: "named",
       sourcemap: true,
     },
