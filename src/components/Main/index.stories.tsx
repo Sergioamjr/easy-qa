@@ -1,13 +1,13 @@
 import React from "react";
-import Combined from "./";
+import Main from "./";
 
 export default {
-  title: "Combined",
-  component: Combined,
+  title: "Main",
+  component: Main,
 };
 
 export const Default = () => (
-  <Combined>
+  <Main>
     <p>Olá nova página</p>
-  </Combined>
+  </Main>
 );

@@ -1,1 +1,3 @@
-export { default } from "./components/Combined";
+import UnguessingUI from "./components/Main";
+
+export default UnguessingUI;

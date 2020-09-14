@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import Uploader from "./../../components/Uploader";
-import Box from "./../../components/Box";
-import ControllBar from "./../../components/ControllBar";
-import { Size, Position, ImageType } from "./../../types";
-import { CleanLocalStorage } from "./../../localstorage";
-import useSetAndGetOnLocalstorageOnMounting from "./../../hooks/useSetAndGetOnLocalstorageOnMounting";
+import Uploader from "../Uploader";
+import Box from "../Box";
+import ControllBar from "../ControllBar";
+import { Size, Position, ImageType } from "../../types";
+import { CleanLocalStorage } from "../../localstorage";
+import useSetAndGetOnLocalstorageOnMounting from "../../hooks/useSetAndGetOnLocalstorageOnMounting";
 import * as S from "./style";
 
 type Props = {
   children: React.ReactNode;
 };
 
-const Page = ({ children }: Props): JSX.Element => {
+const Main = ({ children }: Props): JSX.Element => {
   const [image, setImage] = useState<Partial<ImageType>>({});
   const [opacity, setOpacity] = useState(0.5);
   const [position, setPosition] = useState<Position>({ x: 0, y: 0 });
@@ -93,4 +93,4 @@ const Page = ({ children }: Props): JSX.Element => {
   );
 };
 
-export default Page;
+export default Main;

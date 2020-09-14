@@ -5,21 +5,27 @@ import commonjs from "@rollup/plugin-commonjs";
 import postcss from "rollup-plugin-postcss";
 import resolve from "rollup-plugin-node-resolve";
 import svgr from "@svgr/rollup";
-
-import pkg from "./package.json";
+const dist = "dist";
 
 export default {
   input: "src/index.ts",
   output: [
     {
-      file: pkg.main,
+      file: `${dist}/bundle.cjs.js`,
       format: "cjs",
       exports: "named",
       sourcemap: true,
     },
     {
-      file: pkg.module,
-      format: "es",
+      file: `${dist}/bundle.esm.js`,
+      format: "esm",
+      exports: "named",
+      sourcemap: true,
+    },
+    {
+      name: "UnguessingUI",
+      file: `${dist}/bundle.umd.js`,
+      format: "umd",
       exports: "named",
       sourcemap: true,
     },
