@@ -1,2 +1,1 @@
-export * from "./components/Test";
-export * from "./components/Main";
+export { default as UnguessingUI } from "./components/Main";
