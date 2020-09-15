@@ -32,16 +32,18 @@
     "url": "https://github.com/Sergioamjr/unguessing-ui/issues"
   },
   "homepage": "https://github.com/Sergioamjr/unguessing-ui#readme",
+  "peerDependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
   "dependencies": {
     "@types/styled-components": "^5.1.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
     "react-rnd": "^10.2.2",
     "styled-components": "^5.1.1",
-    "tslint": "^6.1.3",
     "typescript": "^4.0.2"
   },
   "devDependencies": {
+    "tslint": "^6.1.3",
     "@babel/cli": "^7.11.6",
     "@babel/core": "^7.11.6",
     "@babel/preset-env": "^7.11.5",
