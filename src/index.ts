@@ -1,1 +1,1 @@
-export { default as UnguessingUI } from "./components/Main";
+export { default } from "./components/Main";

@@ -6,8 +6,10 @@ export default {
   component: Main,
 };
 
-export const Default = () => (
-  <Main>
-    <p>Olá nova página</p>
-  </Main>
-);
+export const Default = () => {
+  return (
+    <Main>
+      <p>Olá nova página</p>
+    </Main>
+  );
+};

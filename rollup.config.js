@@ -1,10 +1,7 @@
 import external from "rollup-plugin-peer-deps-external";
-import url from "@rollup/plugin-url";
 import typescript from "rollup-plugin-typescript2";
 import commonjs from "@rollup/plugin-commonjs";
-import postcss from "rollup-plugin-postcss";
 import resolve from "rollup-plugin-node-resolve";
-import svgr from "@svgr/rollup";
 const dist = "dist";
 
 export default {
@@ -23,20 +20,6 @@ export default {
       sourcemap: true,
     },
   ],
-  plugins: [
-    external(),
-    postcss({
-      modules: true,
-    }),
-    url({}),
-    svgr(),
-    resolve(),
-    typescript({
-      rollupCommonJSResolveHack: true,
-      clean: true,
-    }),
-    commonjs({
-      include: "node_modules/**",
-    }),
-  ],
+  external: ["styled-components", "react", "react-dom"],
+  plugins: [external(), resolve(), typescript(), commonjs()],
 };

@@ -1,11 +1,13 @@
-const presets = [
-  [
-    "@babel/env",
-    {
-      modules: false,
-    },
+module.exports = {
+  presets: [
+    [
+      "@babel/env",
+      {
+        modules: false,
+      },
+    ],
+    "@babel/preset-react",
+    "@babel/preset-typescript",
   ],
-  ["@babel/preset-react"],
-];
-
-module.exports = { presets };
+  plugins: ["babel-plugin-styled-components"],
+};
