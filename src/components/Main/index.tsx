@@ -67,7 +67,7 @@ const Main = ({ children }: Props): JSX.Element => {
   };
 
   return (
-    <div>
+    <div data-testid="unguessing-ui-id">
       {children}
       <Box
         image={image.image}
