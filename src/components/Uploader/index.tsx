@@ -12,8 +12,12 @@ const Uploader = ({ onUploadImage }: UploaderProps): JSX.Element => {
   }, [image.fileName, image.height, image.image, image.width]);
 
   return (
-    <S.Uploader>
-      <S.Input onChange={(e) => updateFileHandler(e)} type="file" />
+    <S.Uploader data-testid="unguessing-ui-uploader">
+      <S.Input
+        data-testid="uploader-input"
+        onChange={(e) => updateFileHandler(e)}
+        type="file"
+      />
       Escolha a imagem
     </S.Uploader>
   );

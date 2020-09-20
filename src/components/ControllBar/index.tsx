@@ -13,13 +13,17 @@ const ControllBar = ({
     return null;
   }
   return (
-    <S.Controllers>
-      <S.SmallBtn onClick={() => onControllClick("RESET_SIZE")}>
+    <S.Controllers data-testid="unguessing-ui-controller">
+      <S.SmallBtn
+        data-testid="controller-reset"
+        onClick={() => onControllClick("RESET_SIZE")}
+      >
         <Undo />
       </S.SmallBtn>
       <S.Label>
         Opacidade
         <input
+          data-testid="controller-opacity"
           onChange={onChangeOpacity}
           value={opacity * 100}
           type="range"
@@ -27,7 +31,10 @@ const ControllBar = ({
           max="100"
         />
       </S.Label>
-      <S.SmallBtn onClick={() => onControllClick("RESET")}>
+      <S.SmallBtn
+        data-testid="controller-remove"
+        onClick={() => onControllClick("RESET")}
+      >
         <Trash />
       </S.SmallBtn>
     </S.Controllers>
