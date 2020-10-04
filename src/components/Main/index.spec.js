@@ -1,20 +1,7 @@
 import React from "react";
-import { render, cleanup, waitFor } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import { render, cleanup, fireEvent } from "@testing-library/react";
 import Component from ".";
-
-const createImage = ({
-  name = "file.txt",
-  size = 1024,
-  type = "plain/txt",
-  lastModified = new Date(),
-}) => {
-  const blob = new Blob(["a".repeat(size)], { type });
-
-  blob.lastModifiedDate = lastModified;
-
-  return new File([blob], name);
-};
+import useParseImageInto64Base from "../../hooks/useParseImageInto64Base";
 
 afterEach(cleanup);
 
@@ -36,12 +23,21 @@ describe("Component", () => {
     expect(uploader).toBeTruthy();
   });
 
-  it("should upload image", async () => {
-    // const file = createImage({});
-    // const file = new File(["(⌐□_□)"], "chucknorris.png", { type: "image/png" });
-    // const { queryByTestId } = render(<Component />);
-    // const uploader = queryByTestId(`${libKey}-uploader`);
-    // userEvent.upload(uploader, { target: { files: [file] } });
-    // await waitFor(() => queryByTestId(`${libKey}-box`));
+  it("should upload image", () => {
+    const { queryByTestId } = render(<Component />);
+    const uploader = queryByTestId("uploader-input");
+    fireEvent.change(
+      uploader,
+      {
+        target: {
+          files: [
+            new File(["(⌐□_□)"], "chucknorris.png", { type: "image/png" }),
+          ],
+        },
+      },
+      true
+    );
+
+    // await waitFor(() => queryByTestId(`${libKey}-box`).toBeTruthy);
   });
 });
