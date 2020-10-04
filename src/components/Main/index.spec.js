@@ -1,12 +1,24 @@
 import React from "react";
-import { render, cleanup, fireEvent } from "@testing-library/react";
+import {
+  render,
+  cleanup,
+  fireEvent,
+  act,
+  screen,
+  waitFor,
+} from "@testing-library/react";
 import Component from ".";
-import useParseImageInto64Base from "../../hooks/useParseImageInto64Base";
 
 afterEach(cleanup);
 
+const imageUploadObject = {
+  target: {
+    files: [new File(["(⌐□_□)"], "chucknorris.png", { type: "image/png" })],
+  },
+};
+
 describe("Component", () => {
-  const libKey = "unguessing-ui";
+  const lib = "unguessing-ui";
   it("should render", () => {
     const { queryByTestId } = render(<Component />);
     const element = queryByTestId("unguessing-ui-id");
@@ -15,29 +27,25 @@ describe("Component", () => {
 
   it("should check elements", () => {
     const { queryByTestId } = render(<Component />);
-    const box = queryByTestId(`${libKey}-box`);
-    const uploader = queryByTestId(`${libKey}-uploader`);
-    const controller = queryByTestId(`${libKey}-controller`);
+    const box = queryByTestId(`${lib}-box`);
+    const uploader = queryByTestId(`${lib}-uploader`);
+    const controller = queryByTestId(`${lib}-controller`);
     expect(box).toBeFalsy();
     expect(controller).toBeFalsy();
     expect(uploader).toBeTruthy();
   });
 
-  it("should upload image", () => {
-    const { queryByTestId } = render(<Component />);
-    const uploader = queryByTestId("uploader-input");
-    fireEvent.change(
-      uploader,
-      {
-        target: {
-          files: [
-            new File(["(⌐□_□)"], "chucknorris.png", { type: "image/png" }),
-          ],
-        },
-      },
-      true
-    );
+  it("should upload image", async () => {
+    act(() => {
+      render(<Component />);
+    });
+    const uploader = screen.queryByTestId("uploader-input");
+    fireEvent.change(uploader, imageUploadObject);
 
-    // await waitFor(() => queryByTestId(`${libKey}-box`).toBeTruthy);
+    await waitFor(() => {
+      expect(screen.queryByTestId(`${lib}-box`)).toBeTruthy();
+      expect(screen.queryByTestId(`${lib}-controller`)).toBeTruthy();
+      expect(screen.queryByTestId(`${lib}-uploader`)).toBeFalsy();
+    });
   });
 });

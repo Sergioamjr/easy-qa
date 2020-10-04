@@ -8,21 +8,16 @@ const Uploader = ({ onUploadImage }: UploaderProps): JSX.Element => {
     if (!event) return null;
     const file = event.target.files[0];
     const reader: FileReader = new FileReader();
+
     reader.onload = () => {
-      const newImg = new Image();
       const image = typeof reader.result === "string" ? reader.result : "";
-      newImg.src = image;
-      newImg.onload = () => {
-        onUploadImage({
-          fileName: file.name,
-          image,
-          width: newImg.width,
-          height: newImg.height,
-        });
-      };
-    };
-    reader.onerror = (err) => {
-      console.log("err", err);
+
+      onUploadImage({
+        fileName: file.name,
+        image,
+        width: 100,
+        height: 100,
+      });
     };
 
     reader.readAsDataURL(file);
