@@ -18,22 +18,27 @@ const imageUploadObject = {
   },
 };
 
+const defineProperty = (name, value) => {
+  Object.defineProperty(window, name, {
+    value,
+    writable: true,
+    configurable: true,
+  });
+};
+
 describe("Component", () => {
   beforeEach(() => {
-    Object.defineProperty(window, "localStorage", {
-      value: {
-        getItem: jest.fn(() => null),
-        setItem: jest.fn(() => null),
-      },
-      writable: true,
+    defineProperty("localStorage", {
+      getItem: jest.fn(() => null),
+      setItem: jest.fn(() => null),
     });
 
-    Object.defineProperty(window, "location", {
-      value: {
-        reload: jest.fn(() => null),
-      },
-      writable: true,
-      configurable: true,
+    defineProperty("location", {
+      reload: jest.fn(() => null),
+    });
+
+    defineProperty("URL", {
+      createObjectURL: jest.fn(() => null),
     });
   });
 

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Uploader from "../Uploader";
 import Box from "../Box";
 import ControllBar from "../ControllBar";
-import { Size, Position, ImageType } from "../../types";
+import { Size, Position, ImageType, ImageInfo } from "../../types";
 import { CleanLocalStorage } from "../../localstorage";
 import useSetAndGetOnLocalstorageOnMounting from "../../hooks/useSetAndGetOnLocalstorageOnMounting";
 import * as S from "./style";
@@ -35,13 +35,13 @@ const Main = ({ children }: Props): JSX.Element => {
     setSize({ width: ref.style.width, height: ref.style.height });
   };
 
-  const onUploadImage = (UplodatedImage: ImageType) => {
-    const { width, height } = UplodatedImage;
-    setSize({
-      width,
-      height,
-    });
-    setImage(UplodatedImage);
+  const setImageInfoOnImageUpload = (imageInfo: ImageInfo) => {
+    setImage((prev) => ({ ...prev, ...imageInfo }));
+  };
+
+  const setSizeOnImageUpload = ({ width, height }: Size) => {
+    setImage((prev) => ({ ...prev, width, height }));
+    setSize({ width, height });
   };
 
   const onControllClick = (type: string) => {
@@ -86,7 +86,10 @@ const Main = ({ children }: Props): JSX.Element => {
             onControllClick={onControllClick}
           />
         ) : (
-          <Uploader onUploadImage={onUploadImage} />
+          <Uploader
+            setSizeOnImageUpload={setSizeOnImageUpload}
+            setImageInfoOnImageUpload={setImageInfoOnImageUpload}
+          />
         )}
       </S.Float>
     </div>
