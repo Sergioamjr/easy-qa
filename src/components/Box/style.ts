@@ -2,7 +2,8 @@ import styled from "styled-components";
 import { Rnd as RndBase } from "react-rnd";
 
 export const Rnd = styled(RndBase)`
-  z-index: 9999999;
+  z-index: 1;
+  border: 2px solid #00ff72;
 `;
 
 export const Content = styled.div<{ image?: string; opacity: number }>`
