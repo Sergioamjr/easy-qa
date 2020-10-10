@@ -1,19 +1,52 @@
-import React, { useEffect } from "react";
+import React from "react";
 import * as S from "./style";
-import useParseImageInto64Base from "./../../hooks/useParseImageInto64Base";
-import { UploaderProps, ImageType } from "./../../types";
+import { UploaderProps } from "./../../types";
 
-const Uploader = ({ onUploadImage }: UploaderProps): JSX.Element => {
-  const [image, updateFileHandler] = useParseImageInto64Base();
-  useEffect(() => {
-    if (image.fileName && image.height && image.image && image.width) {
-      onUploadImage(image as ImageType);
-    }
-  }, [image.fileName, image.height, image.image, image.width]);
+const Uploader = ({
+  setImageInfoOnImageUpload,
+  setSizeOnImageUpload,
+}: UploaderProps): JSX.Element => {
+  const getImageSize = (file) => {
+    const img = new Image();
+    img.src = window.URL.createObjectURL(file);
+    img.onload = () => {
+      setSizeOnImageUpload({
+        width: img.width,
+        height: img.height,
+      });
+    };
+  };
+
+  const parseImageIntoBase64 = (file) => {
+    const reader: FileReader = new FileReader();
+
+    reader.onload = () => {
+      const image = typeof reader.result === "string" ? reader.result : "";
+
+      setImageInfoOnImageUpload({
+        fileName: file.name,
+        image,
+      });
+    };
+
+    reader.readAsDataURL(file);
+  };
+
+  const updateFileHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    event.persist();
+    if (!event) return null;
+    const file = event.target.files[0];
+    getImageSize(file);
+    parseImageIntoBase64(file);
+  };
 
   return (
-    <S.Uploader>
-      <S.Input onChange={(e) => updateFileHandler(e)} type="file" />
+    <S.Uploader data-testid="unguessing-ui-uploader">
+      <S.Input
+        data-testid="uploader-input"
+        onChange={updateFileHandler}
+        type="file"
+      />
       Escolha a imagem
     </S.Uploader>
   );

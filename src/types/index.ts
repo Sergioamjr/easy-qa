@@ -16,12 +16,12 @@ export type BoxProps = {
   image?: string;
 };
 
-export type ImageType = {
+export type ImageInfo = {
   fileName: string;
   image: string;
-  width: number;
-  height: number;
-};
+}
+
+export type ImageType = ImageInfo & Size;
 
 export type ControllBarProps = {
   onChangeOpacity: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -31,7 +31,8 @@ export type ControllBarProps = {
 };
 
 export type UploaderProps = {
-  onUploadImage: (e: ImageType) => void;
+  setSizeOnImageUpload: (e: Size) => void;
+  setImageInfoOnImageUpload: (e: ImageInfo) => void;
 };
 
 export type UnguessingUITypes = { image: Partial<ImageType> } & Pick<
