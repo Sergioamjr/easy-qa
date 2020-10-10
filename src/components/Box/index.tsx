@@ -13,7 +13,12 @@ const Box = ({
   }
   return (
     <S.Rnd data-testid="unguessing-ui-box" size={size} {...props}>
-      <S.Content opacity={opacity} image={image} />
+      <S.Content
+        data-opac={`opacity-${opacity}`}
+        data-testid="unguessing-ui-image"
+        opacity={opacity}
+        image={image}
+      />
     </S.Rnd>
   );
 };
