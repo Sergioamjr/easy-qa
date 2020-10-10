@@ -6,7 +6,7 @@ name: CI
 # events but only for the master branch
 on:
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -20,6 +20,5 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
-      - name: TDD
-        run: npm run test
+      - name: Run Jest
+        uses: stefanoeb/jest-action@1.0.4
