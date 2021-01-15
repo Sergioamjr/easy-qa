@@ -5,4 +5,5 @@ export const Float = styled.div`
   bottom: 15px;
   right: 15px;
   z-index: 99999;
+  display: flex;
 `;

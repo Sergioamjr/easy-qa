@@ -47,7 +47,7 @@ const Uploader = ({
         onChange={updateFileHandler}
         type="file"
       />
-      Escolha a imagem
+      Select an image
     </S.Uploader>
   );
 };
