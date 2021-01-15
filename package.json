@@ -1,5 +1,5 @@
 {
-  "name": "react-perfect-ui",
+  "name": "react-perfectui",
   "version": "1.1.11",
   "files": [
     "dist"
@@ -8,7 +8,7 @@
     "node": ">=8",
     "npm": ">=5"
   },
-  "description": "RPP helps developers to create screens identical to the design.",
+  "description": "PerfectUI helps developers to create screens identical to the design.",
   "author": "Sergioamjr",
   "license": "MIT",
   "main": "dist/index.cjs.js",
