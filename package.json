@@ -1,5 +1,5 @@
 {
-  "name": "unguessing-ui",
+  "name": "react-perfect-ui",
   "version": "1.1.11",
   "files": [
     "dist"
@@ -8,7 +8,7 @@
     "node": ">=8",
     "npm": ">=5"
   },
-  "description": "Create precis UI without guessing CSS's proprieties.",
+  "description": "RPP helps developers to create screens identical to the design.",
   "author": "Sergioamjr",
   "license": "MIT",
   "main": "dist/index.cjs.js",
@@ -25,13 +25,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Sergioamjr/unguessing-ui.git"
+    "url": "git+https://github.com/Sergioamjr/react-perfect-ui.git"
   },
   "keywords": [],
   "bugs": {
-    "url": "https://github.com/Sergioamjr/unguessing-ui/issues"
+    "url": "https://github.com/Sergioamjr/react-perfect-ui/issues"
   },
-  "homepage": "https://github.com/Sergioamjr/unguessing-ui#readme",
+  "homepage": "https://github.com/Sergioamjr/react-perfect-ui#readme",
   "dependencies": {
     "@types/styled-components": "^5.1.2",
     "react-rnd": "^10.2.4",
