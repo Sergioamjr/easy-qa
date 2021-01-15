@@ -1,15 +1,19 @@
 import styled from "styled-components";
 
-export const SmallBtn = styled.button`
+export const SmallBtn = styled.button<{ danger?: boolean }>`
   width: 30px;
   height: 30px;
-  background: #437ebb;
+  padding: 0;
+  background: ${({ danger }) => (danger ? "#b52727" : "#437ebb")};
   border: 0;
   overflow: hidden;
   border-radius: 4px;
   font-size: 0;
   cursor: pointer;
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   svg {
     width: 18px;
   }
@@ -18,7 +22,6 @@ export const SmallBtn = styled.button`
 export const Controllers = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
   padding: 5px;
   width: 200px;
   border-radius: 4px;

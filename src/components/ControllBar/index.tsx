@@ -21,7 +21,7 @@ const ControllBar = ({
         <Undo />
       </S.SmallBtn>
       <S.Label>
-        Opacidade
+        Opacity
         <input
           data-testid="controller-opacity"
           onChange={onChangeOpacity}
@@ -32,6 +32,7 @@ const ControllBar = ({
         />
       </S.Label>
       <S.SmallBtn
+        danger
         data-testid="controller-remove"
         onClick={() => onControllClick("RESET")}
       >
