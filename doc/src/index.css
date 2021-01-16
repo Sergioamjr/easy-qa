@@ -4,4 +4,28 @@
   -moz-osx-font-smoothing: grayscale;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+div[data-testid="unguessing-ui-id"] {
+  height: 100%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+  height: 100%;
 }
