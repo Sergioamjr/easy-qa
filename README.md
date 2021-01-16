@@ -12,10 +12,6 @@ PerfectUI was made to help you to create the perfect screen/component UI, lookin
 
 You just need to upload an image file of your layout page or component UI and than control its opacity, scale and position dragging it over the screen.
 
-## Demo
-
-![Demo](./doc/demo-component.gif)
-
 ## Install
 
 ```bash
