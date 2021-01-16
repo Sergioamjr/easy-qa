@@ -1,6 +1,6 @@
 dist/
 node_modules/
-v1/
+doc/
 src/types/
 src/**/*.stories.tsx
 yarn-error.log
