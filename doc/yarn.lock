@@ -11003,10 +11003,10 @@ typescript@^4.0.2, typescript@^4.0.3:
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.1.3.tgz#519d582bd94cba0cf8934c7d8e8467e473f53bb7"
   integrity sha512-B3ZIOf1IKeH2ixgHhj6la6xdwR9QrLC5d1VKeCSY4tvkqhF2eqd9O7txNlS0PO3GrBAFIdr3L1ndNwteUbZLYg==
 
-unguessing-ui@^1.1.11:
-  version "1.1.11"
-  resolved "https://registry.yarnpkg.com/unguessing-ui/-/unguessing-ui-1.1.11.tgz#bfaccb585a70d2dc0215d1d532e69bcc9bd9dad9"
-  integrity sha512-pv8HILg8l3PSQx3th8TTYmiQe15B0OFQRQ9E8CM1Cuh/0Pg8eCw8E6KVIjz3ubigPx8Wh7xFH+vBOowVDmYqFQ==
+unguessing-ui@^1.1.13:
+  version "1.1.13"
+  resolved "https://registry.yarnpkg.com/unguessing-ui/-/unguessing-ui-1.1.13.tgz#a294fe9213ec3c4e1c4ab2593f42f8f88f39bc93"
+  integrity sha512-EDzcEkAXrP8kC064hc1BdR8Y8jLxAmYZnz3paTPE9pAX0o8EtBAdsAlPfx5dUJ1T4GyzF19BtUbneCUpdtHlyw==
   dependencies:
     "@types/styled-components" "^5.1.2"
     react-rnd "^10.2.4"

@@ -36,7 +36,7 @@ const InputLink = () => {
 
           <div>
             <Style.Button onClick={redirectToCompare} disabled={!isValid}>
-              Enviar
+              Submit
             </Style.Button>
           </div>
         </Style.Form>

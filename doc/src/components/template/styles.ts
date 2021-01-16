@@ -22,3 +22,13 @@ export const Logo = styled.h1`
 export const Content = styled.div`
   height: calc(100% - 50px);
 `;
+
+export const A = styled.a`
+  font-weight: 600;
+  text-decoration: none;
+  align-items: center;
+  display: flex;
+  svg {
+    margin-left: 5px;
+  }
+`;

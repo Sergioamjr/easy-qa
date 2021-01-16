@@ -1,3 +1,4 @@
+import { Github } from "../../icons";
 import * as Style from "./styles";
 
 type Props = {
@@ -9,8 +10,17 @@ export default function Template({ children }: Props) {
     <>
       <Style.Header>
         <div className="container">
-          <Style.Logo>PerfectUI</Style.Logo>
-          <p>Github</p>
+          <Style.A href="/">
+            <Style.Logo>React PerfectUI</Style.Logo>
+          </Style.A>
+          <Style.A
+            href="https://github.com/Sergioamjr/react-perfect-ui"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Github
+            <Github />
+          </Style.A>
         </div>
       </Style.Header>
       <Style.Content>{children}</Style.Content>
