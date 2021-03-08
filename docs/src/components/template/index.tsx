@@ -11,10 +11,10 @@ export default function Template({ children }: Props) {
       <Style.Header>
         <div className="container">
           <Style.A href="/">
-            <Style.Logo>React PerfectUI</Style.Logo>
+            <Style.Logo>React Pixel Perfect</Style.Logo>
           </Style.A>
           <Style.A
-            href="https://github.com/Sergioamjr/react-perfect-ui"
+            href="https://github.com/Sergioamjr/react-pixel-perfect"
             target="_blank"
             rel="noreferrer"
           >
