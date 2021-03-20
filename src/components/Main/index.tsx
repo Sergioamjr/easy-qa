@@ -1,88 +1,118 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Uploader from "../Uploader";
 import Box from "../Box";
 import ControllBar from "../ControllBar";
-import { Size, Position, ImageType, ImageInfo } from "../../types";
-import { CleanLocalStorage } from "../../localstorage";
-import useSetAndGetOnLocalstorageOnMounting from "../../hooks/useSetAndGetOnLocalstorageOnMounting";
+import { Size, ImageInfo, StateType } from "../../types";
+import {
+  CleanLocalStorage,
+  SetLocalStorage,
+  GetLocalStorage,
+} from "../../localstorage";
 import * as S from "./style";
 
 type Props = {
   children: React.ReactNode;
 };
 
-const Main = ({ children }: Props): JSX.Element => {
-  const [image, setImage] = useState<Partial<ImageType>>({});
-  const [opacity, setOpacity] = useState(0.5);
-  const [position, setPosition] = useState<Position>({ x: 0, y: 0 });
-  const [size, setSize] = useState<Partial<Size>>({});
+const defaultState = {
+  opacity: 0.5,
+  position: { x: 0, y: 0 },
+  size: { width: 0, height: 0 },
+  image: {},
+};
 
-  useSetAndGetOnLocalstorageOnMounting({
-    image,
-    setImage,
-    opacity,
-    setOpacity,
-    position,
-    setPosition,
-    size,
-    setSize,
-  });
+const Main = ({ children }: Props): JSX.Element => {
+  const [state, setState] = useState<StateType>(defaultState);
+
+  useEffect(() => {
+    const storage = GetLocalStorage();
+    if (storage) {
+      setState((prev) => ({
+        ...prev,
+        ...storage,
+      }));
+    }
+  }, []);
+
+  useEffect(() => {
+    SetLocalStorage(state);
+  }, [
+    state.size.height,
+    state.size.width,
+    state.position.x,
+    state.position.y,
+    state.opacity,
+    state.image.image,
+  ]);
 
   const onDragStop = (_e, { x, y }) => {
-    setPosition({ x, y });
+    setState((prev) => ({ ...prev, position: { x, y } }));
   };
-  const onResize = (_e, _direction, ref) => {
-    setSize({ width: ref.style.width, height: ref.style.height });
+
+  const onResize = (_e, _direction, ref, _delta, position) => {
+    setState((prev) => ({
+      ...prev,
+      size: { width: ref.style.width, height: ref.style.height },
+      position,
+    }));
   };
 
   const setImageInfoOnImageUpload = (imageInfo: ImageInfo) => {
-    setImage((prev) => ({ ...prev, ...imageInfo }));
+    setState((prev) => ({
+      ...prev,
+      image: imageInfo,
+    }));
   };
 
   const setSizeOnImageUpload = ({ width, height }: Size) => {
-    setImage((prev) => ({ ...prev, width, height }));
-    setSize({ width, height });
+    setState((prev) => ({
+      ...prev,
+      image: { ...prev.image, width, height },
+      size: { width, height },
+    }));
   };
 
   const onControllClick = (type: string) => {
     if (type === "RESET_SIZE") {
-      const { width, height } = image;
-      setSize({ width, height });
+      const { width, height } = state.image;
+      setState((prev) => ({
+        ...defaultState,
+        ...prev,
+        size: { width, height },
+      }));
     }
 
     if (type === "RESET") {
-      setImage({});
-      setSize({});
+      setState(defaultState);
       CleanLocalStorage();
     }
-
-    setOpacity(0.5);
-    setPosition({ x: 0, y: 0 });
   };
 
-  const onChangeOpacity = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.target;
-    const valueToInt = parseInt(value, 10);
-    setOpacity(valueToInt / 100);
+  const onChangeOpacity = ({
+    target: { value },
+  }: React.ChangeEvent<HTMLInputElement>) => {
+    setState((prev) => ({
+      ...prev,
+      opacity: parseInt(value, 10) / 100,
+    }));
   };
 
   return (
     <div data-testid="unguessing-ui-id">
       {children}
       <Box
-        image={image.image}
+        image={state.image.image}
         onResize={onResize}
         onDragStop={onDragStop}
-        size={size}
-        position={position}
-        opacity={opacity}
+        size={state.size}
+        position={state.position}
+        opacity={state.opacity}
       />
       <S.Float>
-        {image.image ? (
+        {state.image.image ? (
           <ControllBar
-            opacity={opacity}
+            opacity={state.opacity}
             onChangeOpacity={onChangeOpacity}
-            hasImage={!!image.image}
             onControllClick={onControllClick}
           />
         ) : (

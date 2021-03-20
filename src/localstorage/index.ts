@@ -1,12 +1,12 @@
-import { UnguessingUITypes } from "./../types";
-const key = "UNGUESSING-UI";
+import { StateType } from "./../types";
+const key = "REACT-PIXEL-PERFECT";
 
-export const GetLocalStorage = (): UnguessingUITypes => {
+export const GetLocalStorage = (): StateType => {
   const store = window.localStorage.getItem(key) || "{}";
   return JSON.parse(store);
 };
 
-export const SetLocalStorage = (store: UnguessingUITypes): void => {
+export const SetLocalStorage = (store: StateType): void => {
   try {
     window.localStorage.setItem(key, JSON.stringify(store));
   } catch (error) {

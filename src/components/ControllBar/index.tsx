@@ -6,12 +6,8 @@ import { ControllBarProps } from "./../../types";
 const ControllBar = ({
   onChangeOpacity,
   onControllClick,
-  hasImage,
   opacity,
 }: ControllBarProps): JSX.Element => {
-  if (!hasImage) {
-    return null;
-  }
   return (
     <S.Controllers data-testid="unguessing-ui-controller">
       <S.SmallBtn

@@ -113,13 +113,12 @@ describe("Component", () => {
     fireEvent.change(uploader, imageUploadObject);
 
     await waitFor(() => {
-      expect(window.localStorage.setItem).toHaveBeenCalledTimes(1);
+      expect(window.localStorage.setItem).toHaveBeenCalled();
       const input = screen.queryByTestId("controller-opacity");
-      fireEvent.change(input, { target: { value: "70" } });
       fireEvent.change(input, { target: { value: "80" } });
       const imageBox = screen.getByTestId("unguessing-ui-image");
       expect(imageBox).toHaveAttribute("data-opac", "opacity-0.8");
-      expect(window.localStorage.setItem).toHaveBeenCalledTimes(2);
+      expect(window.localStorage.setItem).toHaveBeenCalledTimes(3);
     });
   });
 
