@@ -27,14 +27,16 @@ Import the main component and wrap to top level of your application or page that
 ```javascript
 import PixelPerfect from "react-pixel-perfect";
 
-function App(props) {
-  return <YourApplication {...props} />;
+export default function App(props) {
+  return (
+    <PixelPerfect>
+      <YourApplication {...props} />;
+    </PixelPerfect>
+  );
 }
-
-export default PixelPerfect(App);
 ```
 
-A button should appears on the right bottom of your page. Now you can upload a image and then controll its size, position, opacity over your screen, reset its settings and delete the image.
+A button will appear on the right bottom of your page. Now you can upload an image and then control its size, position, opacity over your screen, reset its settings and delete the image.
 
 ## It's important to you know
 

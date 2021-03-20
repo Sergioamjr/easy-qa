@@ -9,11 +9,15 @@ export default {
 export const Default = () => {
   return (
     <Main>
-      <p>Olá nova página</p>
-      <img
-        src="https://i0.wp.com/noticiasetecnologia.com/wp-content/uploads/2019/06/Keanu-Reeves.jpg"
-        alt="Keanu reavers"
-      />
+      <p>Try to take a print screen and compare with this text :)</p>
+    </Main>
+  );
+};
+
+export const NotUsingLocalStorage = () => {
+  return (
+    <Main saveOnLocalStorage={false}>
+      <p>Not using localstorage.</p>
     </Main>
   );
 };

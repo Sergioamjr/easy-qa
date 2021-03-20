@@ -2,12 +2,7 @@ import React from "react";
 import * as S from "./style";
 import { BoxProps } from "./../../types";
 
-const Box = ({
-  image,
-  opacity,
-  size = { width: 0, height: 0 },
-  ...props
-}: BoxProps): JSX.Element => {
+const Box = ({ image, opacity, size, ...props }: BoxProps): JSX.Element => {
   if (!image) {
     return null;
   }

@@ -9,7 +9,7 @@ export type DraggableEventHandler = (
 
 export type BoxProps = {
   opacity: number;
-  size: Partial<Size>;
+  size: Size;
   position: Position;
   onDragStop: DraggableEventHandler;
   onResize: RndResizeCallback;
@@ -32,6 +32,11 @@ export type ControllBarProps = {
 export type UploaderProps = {
   setSizeOnImageUpload: (e: Size) => void;
   setImageInfoOnImageUpload: (e: ImageInfo) => void;
+};
+
+export type ComponentProps = {
+  saveOnLocalStorage?: boolean;
+  children?: React.ReactNode;
 };
 
 export type StateType = {
