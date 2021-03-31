@@ -9,6 +9,7 @@
     "allowJs": false,
     "jsx": "react",
     "declaration": true,
+    "skipLibCheck": true,
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,

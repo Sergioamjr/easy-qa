@@ -7,4 +7,9 @@ export default {
   component: Uploader,
 };
 
-export const Default = () => <Uploader onUploadImage={(e: ImageType) => {}} />;
+export const Default = () => (
+  <Uploader
+    setImageInfoOnImageUpload={(_e: ImageType) => {}}
+    setSizeOnImageUpload={(_e: ImageType) => {}}
+  />
+);

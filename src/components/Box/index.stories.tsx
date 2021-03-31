@@ -10,10 +10,10 @@ export default {
 export const Primary = () => {
   const [position, setPosition] = useState<Position>({ x: 10, y: 20 });
   const [size, setSize] = useState<Size>({ width: 200, height: 200 });
-  const onDragStop = (e, { x, y }) => {
+  const onDragStop = (_e, { x, y }) => {
     setPosition({ x, y });
   };
-  const onResize = (e, direction, ref) => {
+  const onResize = (_e, _direction, ref) => {
     setSize({ width: ref.style.width, height: ref.style.height });
   };
   return (

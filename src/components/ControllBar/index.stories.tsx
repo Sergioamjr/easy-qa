@@ -10,7 +10,6 @@ export const Default = () => (
   <ControllBar
     onControllClick={() => {}}
     opacity={1}
-    hasImage
     onChangeOpacity={() => {}}
   />
 );
