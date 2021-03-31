@@ -11,7 +11,7 @@ export default function Template({ children }: Props) {
       <Style.Header>
         <div className="container">
           <Style.A href="/">
-            <Style.Logo>React Pixel Perfect</Style.Logo>
+            <Style.Logo>Easy QA</Style.Logo>
           </Style.A>
           <Style.A
             href="https://github.com/Sergioamjr/react-pixel-perfect"
