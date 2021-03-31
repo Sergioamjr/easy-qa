@@ -3,7 +3,7 @@ import queryString from "query-string";
 import { useLocation } from "react-router-dom";
 import validateUrl from "valid-url";
 import Iframe from "react-iframe";
-import UnguessingUI from "unguessing-ui";
+import EasyQA from "easy-qa";
 import Template from "./../template";
 
 const InputLink = () => {
@@ -21,9 +21,9 @@ const InputLink = () => {
   return (
     <Template>
       {isValid && url && typeof url === "string" ? (
-        <UnguessingUI>
+        <EasyQA saveOnLocalStorage={false}>
           <Iframe url={url} />
-        </UnguessingUI>
+        </EasyQA>
       ) : (
         <p>URL não é valida!</p>
       )}
